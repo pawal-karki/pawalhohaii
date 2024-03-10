@@ -35,22 +35,22 @@ html {
 :root{
     font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 cursor: default;
---color-white: #ffffff;
+--color-white: #fff;
 --color-black: #000;
 --color-dark-mode: #11111b;
---color-light-mode: #937b5f;
---color-ddd-color: #b26060;
+--color-light-mode: #ffffff60;
+--color-ddd-color: #ddd;
 --color-gray: #c4c4c4;
---color-purple: #8c1818;
---color-light-purple: #172e3c;
+--color-purple: #8d3657;
+--color-light-purple: #cf59e6;
 --color-light-blue: #6bc5f8;
 --color-navbarBorder-dark: #e2e2e207;
 --color-shadowDark: rgba(0, 0, 0, 0.137);
---static-heading-gradient-blue: #1d6b68;
---static-heading-gradient-pink: #5c182e;
+--static-heading-gradient-blue: #487674;
+--static-heading-gradient-pink: #3c1220;
 --tech-stack-box-first-color: #1a1a29;
 --tech-stack-box-second-color: rgba(27, 27, 40, 0);
---tech-stack-box-border-color: #292929;
+--tech-stack-box-border-color: #2a2626;
 
 }
 ::-webkit-scrollbar{
@@ -60,7 +60,7 @@ cursor: default;
     background: #0a0a10;
 }
 ::-webkit-scrollbar-thumb{
-   background-color: #4d1014;
+   background-color: #8000ff;
    /* border-radius: 20px; */
 
 }
@@ -111,13 +111,13 @@ body{
     --color-white: #000;
     --color-ddd-color: rgb(31, 31, 31);
     --color-navbarBorder-dark:#d1d6eb;
-    --static-heading-gradient-blue: #0f7878;
-    --static-heading-gradient-pink: #5e142e;
-    --color-shadowDark:#ffffff;
-    --tech-stack-box-first-color:#5c5852;
+    --static-heading-gradient-blue: #093b3b;
+    --static-heading-gradient-pink: #ae8896;
+    --color-shadowDark:#e2ddd7;
+    --tech-stack-box-first-color:#e7e2db;
     --tech-stack-box-second-color:#ece7e100;
-    --tech-stack-box-border-color: #9ad4cc;
-}gi
+    --tech-stack-box-border-color: #dad5cf;
+}
 .setting-container{
     width: 60px;
     height: 50px;
@@ -1140,4 +1140,3 @@ noscript{
    .cta:active {
     transform: scale(0.95);
    }
-
