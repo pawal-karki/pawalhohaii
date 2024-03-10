@@ -38,19 +38,19 @@ cursor: default;
 --color-white: #fff;
 --color-black: #000;
 --color-dark-mode: #11111b;
---color-light-mode: #ffffff60;
+--color-light-mode: #ece7e1;
 --color-ddd-color: #ddd;
 --color-gray: #c4c4c4;
---color-purple: #8d3657;
+--color-purple: #8000ff;
 --color-light-purple: #cf59e6;
 --color-light-blue: #6bc5f8;
 --color-navbarBorder-dark: #e2e2e207;
 --color-shadowDark: rgba(0, 0, 0, 0.137);
---static-heading-gradient-blue: #487674;
---static-heading-gradient-pink: #3c1220;
+--static-heading-gradient-blue: #b0f3f1;
+--static-heading-gradient-pink: #ffcfdf;
 --tech-stack-box-first-color: #1a1a29;
 --tech-stack-box-second-color: rgba(27, 27, 40, 0);
---tech-stack-box-border-color: #2a2626;
+--tech-stack-box-border-color: #292929;
 
 }
 ::-webkit-scrollbar{
@@ -111,8 +111,8 @@ body{
     --color-white: #000;
     --color-ddd-color: rgb(31, 31, 31);
     --color-navbarBorder-dark:#d1d6eb;
-    --static-heading-gradient-blue: #093b3b;
-    --static-heading-gradient-pink: #ae8896;
+    --static-heading-gradient-blue: #0f7878;
+    --static-heading-gradient-pink: #f09bb9;
     --color-shadowDark:#e2ddd7;
     --tech-stack-box-first-color:#e7e2db;
     --tech-stack-box-second-color:#ece7e100;
@@ -1140,3 +1140,4 @@ noscript{
    .cta:active {
     transform: scale(0.95);
    }
+
