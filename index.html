@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- DNS Prefetch and Preconnect for faster loading -->
+  <link rel="dns-prefetch" href="https://unpkg.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() {
@@ -19,12 +27,12 @@
   <title>Pawal Karki | Portfolio</title>
   <link rel="icon" type="image/x-icon" href="src/png/main-favicon.png" />
   <!-- aos cdn -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" media="print" onload="this.media='all'" />
   <!-- stylesheet -->
   <link rel="stylesheet" href="style.css" />
   <!-- google fonts-->
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Passions+Conflict&family=Orbitron&family=Fira+Code&family=Six+Caps" />
+    href="https://fonts.googleapis.com/css2?family=Passions+Conflict&family=Orbitron&family=Fira+Code&family=Six+Caps&display=swap" />
 
 <body class="body">
   <audio loop="" id="audioPlayer" style="display: none">
@@ -41,7 +49,7 @@
       <div class="hey">Hey!</div>
       <div class="logo" tabindex="0" aria-label="vinod jangid logo">
         <div class="logo-top">
-          <img src="src/png/nav-avatar.png" alt="animation-head" id="nav-avatar"/>
+          <img src="src/png/nav-avatar.png" alt="animation-head" id="nav-avatar" loading="eager" fetchpriority="high"/>
         </div>
       </div>
       <div class="navbar-tabs" id="navbar-tabs">
@@ -277,7 +285,7 @@
           </div>
 
           <div class="dp" data-aos="fade-up">
-            <img src="src/webp/pawal.jpg" alt="Pawal Karki" tabindex="0" aria-label="image of vinod" />
+            <img src="src/webp/pawal.jpg" alt="Pawal Karki" tabindex="0" aria-label="image of vinod" loading="lazy" />
           </div>
         </div>
       </div>
@@ -300,41 +308,41 @@
           </h3>
           <ul class="tech-stack-wrapper">
             <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/htmllogo.png" alt="Html skill" class="tech-stack-logo" />
+              <img src="./src/png/htmllogo.png" alt="Html skill" class="tech-stack-logo" loading="lazy" />
               <span class="tooltip">HTML</span>
             </li>
 
             <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/csslogo.png" alt="css skill" class="tech-stack-logo" />
+              <img src="./src/png/csslogo.png" alt="css skill" class="tech-stack-logo" loading="lazy" />
               <span class="tooltip">CSS</span>
             </li>
 
             <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/jslogo.png" alt="js skill" class="tech-stack-logo" />
+              <img src="./src/png/jslogo.png" alt="js skill" class="tech-stack-logo" loading="lazy" />
               <span class="tooltip">JS</span>
             </li>
 
             <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/django.svg" alt="djnago skill" class="tech-stack-logo" />
+              <img src="./src/png/django.svg" alt="djnago skill" class="tech-stack-logo" loading="lazy" />
               <span class="tooltip">Django</span>
             </li>
 
             <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/reactlogo.png" alt="react skill" class="tech-stack-logo" />
+              <img src="./src/png/reactlogo.png" alt="react skill" class="tech-stack-logo" loading="lazy" />
               <span class="tooltip">React Js</span>
             </li>
 
             <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/nextlogo.png" alt="nextjs skill" class="tech-stack-logo" />
+              <img src="./src/png/nextlogo.png" alt="nextjs skill" class="tech-stack-logo" loading="lazy" />
               <span class="tooltip">Next Js</span>
             </li>
             <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/githublogo.png" alt="github skill" class="tech-stack-logo needtobeinvert" />
+              <img src="./src/png/githublogo.png" alt="github skill" class="tech-stack-logo needtobeinvert" loading="lazy" />
               <span class="tooltip">Github</span>
             </li>
 
             <li class="tech-stack-box" data-aos="fade-up">
-              <img src="./src/png/gitlogo.png" alt="git skill" class="tech-stack-logo" />
+              <img src="./src/png/gitlogo.png" alt="git skill" class="tech-stack-logo" loading="lazy" />
               <span class="tooltip">GIT</span>
             </li>
           </ul>
@@ -354,7 +362,7 @@
           <div data-aos="fade-up" class="project-box-wrapper">
             <div class="project-box project-box2" id="project-box2">
               <div class="info-div">
-                <img src="src/webp/Flight.png" alt="airwings website favicon" class="faviconforProject" />
+                <img src="src/webp/Flight.png" alt="airwings website favicon" class="faviconforProject" loading="lazy" />
                 <article class="ProjectHeading">AirWings Horizon</article>
                 <p class="ProjectDescription">
                   Air-Winggs Horizon: A Flight Booking Website for booking flights of nepal with with role based access control.
@@ -362,7 +370,7 @@
                 <div class="project-buttons">
                   <a href="https://github.com/pawal-karki/AirWings-Horizon-Frontend" target="_blank" class="github-redirect"
                     aria-label="Visit AirWings Horizon on GitHub">
-                    <img src="src/svg/github.svg" alt="github redirect button" />
+                    <img src="src/svg/github.svg" alt="github redirect button" loading="lazy" />
                   </a>
                   <a href="https://airwings-horizon.netlify.app/" target="_blank" class="cta"
                     aria-label="Visit Pexelicons Live">
@@ -375,7 +383,7 @@
                 </div>
               </div>
               <div class="image-div">
-                <img src="src/webp/Flight.png" alt="Airwings Horizon website preview image" />
+                <img src="src/webp/Flight.png" alt="Airwings Horizon website preview image" loading="lazy" />
               </div>
             </div>
           </div>
@@ -427,7 +435,7 @@
           </div>
         </div>
         <div class="footer-avatar-container">
-          <img src="src/png/pawal-avatar.png" alt="animation-head" class="footer-avatar-img" id="footer-wala-avatar"/>
+          <img src="src/png/pawal-avatar.png" alt="animation-head" class="footer-avatar-img" id="footer-wala-avatar" loading="lazy"/>
           <div class="footer-avatar-face">
             <div class="footer-avatar-eye footer-left-eye">
               <div class="footer-pupil"></div>
@@ -448,61 +456,75 @@
   </footer>
   <!-- footer ends here -->
 
-  <script src="main.js"></script>
+  <script src="main.js" defer></script>
 
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
   <script>
-    AOS.init();
+    document.addEventListener('DOMContentLoaded', function() {
+      AOS.init({
+        once: true,  // Whether animation should happen only once - while scrolling down
+        disable: window.innerWidth < 768  // Disable animations on mobile
+      });
+    });
   </script>
 
   <script>
     function openURL() {
       var url = "src/pdf/Pawal Resume.pdf";
-
       window.open(url, "_blank");
     }
   </script>
 
   <script>
-    const cursorInner = document.getElementById("cursor-inner");
-    const cursorOuter = document.getElementById("cursor-outer");
-    const links = document.querySelectorAll("a,label,button");
+    document.addEventListener('DOMContentLoaded', function() {
+      const cursorInner = document.getElementById("cursor-inner");
+      const cursorOuter = document.getElementById("cursor-outer");
+      const links = document.querySelectorAll("a,label,button");
 
-    document.addEventListener("mousemove", function (e) {
-      const posX = e.clientX;
-      const posY = e.clientY;
+      document.addEventListener("mousemove", function (e) {
+        const posX = e.clientX;
+        const posY = e.clientY;
 
-      cursorInner.style.left = `${posX}px`;
-      cursorInner.style.top = `${posY}px`;
+        cursorInner.style.left = `${posX}px`;
+        cursorInner.style.top = `${posY}px`;
 
+        cursorOuter.animate(
+          {
+            left: `${posX}px`,
+            top: `${posY}px`,
+          },
+          { duration: 500, fill: "forwards" }
+        );
 
-      cursorOuter.animate(
-        {
-          left: `${posX}px`,
-          top: `${posY}px`,
-        },
-        { duration: 500, fill: "forwards" }
-      );
-
-      links.forEach((link) => {
-        link.addEventListener("mouseenter", () => {
-          cursorInner.classList.add("hover");
-          cursorOuter.classList.add("hover");
-        });
-        link.addEventListener("mouseleave", () => {
-          cursorInner.classList.remove("hover");
-          cursorOuter.classList.remove("hover");
+        links.forEach((link) => {
+          link.addEventListener("mouseenter", () => {
+            cursorInner.classList.add("hover");
+            cursorOuter.classList.add("hover");
+          });
+          link.addEventListener("mouseleave", () => {
+            cursorInner.classList.remove("hover");
+            cursorOuter.classList.remove("hover");
+          });
         });
       });
     });
   </script>
- <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-<script>
-  kofiWidgetOverlay.draw('pawal_karki', {
-    'type': 'floating-chat',
-    'floating-chat.donateButton.text': 'Support me',
-    'floating-chat.donateButton.background-color': '#794bc4',
-    'floating-chat.donateButton.text-color': '#fff'
+ <script>
+  // Load Ko-fi widget after page is fully loaded
+  window.addEventListener('load', function() {
+    const kofiScript = document.createElement('script');
+    kofiScript.src = 'https://storage.ko-fi.com/cdn/scripts/overlay-widget.js';
+    kofiScript.onload = function() {
+      if (typeof kofiWidgetOverlay !== 'undefined') {
+        kofiWidgetOverlay.draw('pawal_karki', {
+          'type': 'floating-chat',
+          'floating-chat.donateButton.text': 'Support me',
+          'floating-chat.donateButton.background-color': '#794bc4',
+          'floating-chat.donateButton.text-color': '#fff'
+        });
+      }
+    };
+    document.body.appendChild(kofiScript);
   });
 </script>
 </body>
