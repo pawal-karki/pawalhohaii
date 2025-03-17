@@ -318,13 +318,37 @@ header {
 }
 
 #preloader {
-  background-color: #fff;
   position: fixed;
-  z-index: 99999;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  overflow-y: hidden;
-  background-image: url(src/svg/Pulse-0.4s-200px.svg);
-  background-size: 10%;
+  align-items: center;
+  background-color: var(--color-dark-mode);
+  font-family: "Fira Code", monospace;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--color-purple),
+    var(--color-light-blue)
+  );
+  border-radius: 3px;
+  margin-bottom: 10px;
+  transition: width 0.3s ease;
+  max-width: 250px;
+}
+
+.progress-text {
+  font-size: 1.6rem;
+  color: white;
+  font-weight: 500;
+  letter-spacing: 1px;
 }
 
 .navbar,

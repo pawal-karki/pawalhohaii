@@ -20,17 +20,50 @@ const elements = {
   pupils: Array.from(document.getElementsByClassName("footer-pupil")),
 };
 
-// Preloader - Use event listener only when needed
-if (elements.loader) {
-  window.addEventListener(
-    "load",
-    () => {
-      elements.loader.style.display = "none";
-      document.querySelector(".hey")?.classList.add("popup");
-    },
-    { once: true }
-  ); // Use once option to auto-remove listener after execution
-}
+// Enhanced preloader with progress indicator
+document.addEventListener("DOMContentLoaded", function () {
+  const preloader = document.getElementById("preloader");
+  if (preloader) {
+    // Create progress element
+    const progressBar = document.createElement("div");
+    progressBar.className = "progress-bar";
+    preloader.appendChild(progressBar);
+
+    // Create progress text
+    const progressText = document.createElement("div");
+    progressText.className = "progress-text";
+    progressText.textContent = "0%";
+    preloader.appendChild(progressText);
+
+    // Start with initial progress
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += Math.random() * 10;
+      if (progress > 70) {
+        clearInterval(interval);
+      }
+      progressBar.style.width = Math.min(progress, 70) + "%";
+      progressText.textContent = Math.floor(Math.min(progress, 70)) + "%";
+    }, 200);
+
+    // Complete loading when everything is loaded
+    window.addEventListener(
+      "load",
+      () => {
+        // Complete progress animation
+        progressBar.style.width = "100%";
+        progressText.textContent = "100%";
+
+        // Hide preloader after a short delay
+        setTimeout(() => {
+          preloader.style.display = "none";
+          document.querySelector(".hey")?.classList.add("popup");
+        }, 300);
+      },
+      { once: true }
+    );
+  }
+});
 
 // Settings toggle - Simplified
 function settingToggle() {
