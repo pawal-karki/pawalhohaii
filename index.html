@@ -80,6 +80,16 @@
         </ul>
       </div>
       <!-- navbar tabs ends -->
+      
+      <!-- Quick toggle buttons -->
+      <div class="quick-toggles">
+        <button class="toggle-btn theme-toggle" onclick="visualMode()" aria-label="Toggle dark/light mode">
+          <i class="toggle-icon theme-icon"></i>
+        </button>
+        <button class="toggle-btn sound-toggle" onclick="playPause()" aria-label="Toggle sound">
+          <i class="toggle-icon sound-icon"></i>
+        </button>
+      </div>
     </div>
   </header>
   <!-- header ends here -->
@@ -232,7 +242,7 @@
             </div>
 
             <div class="soundtogglebuttoncontainer" id="soundtogglebuttoncontainer">
-              <input type="checkbox" id="switchforsound" onclick="playpause()" />
+              <input type="checkbox" id="switchforsound" onclick="playPause()" />
               <label for="switchforsound" id="labelforsound" tabindex="0" aria-label="switch sound"
                 class="needtobeinvert"></label>
             </div>
