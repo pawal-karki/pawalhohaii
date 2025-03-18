@@ -18,52 +18,46 @@ const elements = {
     ".mobiletogglemenu .mobile-navbar-tabs-ul li"
   ),
   pupils: Array.from(document.getElementsByClassName("footer-pupil")),
+  themeButton: document.querySelector(".theme-toggle"),
+  soundButton: document.querySelector(".sound-toggle"),
 };
 
-// Enhanced preloader with progress indicator
-document.addEventListener("DOMContentLoaded", function () {
-  const preloader = document.getElementById("preloader");
-  if (preloader) {
-    // Create progress element
-    const progressBar = document.createElement("div");
-    progressBar.className = "progress-bar";
-    preloader.appendChild(progressBar);
+// Preloader - Use event listener only when needed
+if (elements.loader) {
+  window.addEventListener(
+    "load",
+    () => {
+      elements.loader.style.display = "none";
+      document.querySelector(".hey")?.classList.add("popup");
 
-    // Create progress text
-    const progressText = document.createElement("div");
-    progressText.className = "progress-text";
-    progressText.textContent = "0%";
-    preloader.appendChild(progressText);
+      // Initialize buttons state based on saved preferences
+      initializeToggleStates();
+    },
+    { once: true }
+  ); // Use once option to auto-remove listener after execution
+}
 
-    // Start with initial progress
-    let progress = 0;
-    const interval = setInterval(() => {
-      progress += Math.random() * 10;
-      if (progress > 70) {
-        clearInterval(interval);
-      }
-      progressBar.style.width = Math.min(progress, 70) + "%";
-      progressText.textContent = Math.floor(Math.min(progress, 70)) + "%";
-    }, 200);
-
-    // Complete loading when everything is loaded
-    window.addEventListener(
-      "load",
-      () => {
-        // Complete progress animation
-        progressBar.style.width = "100%";
-        progressText.textContent = "100%";
-
-        // Hide preloader after a short delay
-        setTimeout(() => {
-          preloader.style.display = "none";
-          document.querySelector(".hey")?.classList.add("popup");
-        }, 300);
-      },
-      { once: true }
-    );
+// Initialize toggle states based on stored preferences
+function initializeToggleStates() {
+  // Check for saved theme preference
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "light") {
+    elements.body.classList.add("light-mode");
+    document.querySelectorAll(".needtobeinvert").forEach((element) => {
+      element.classList.add("invertapplied");
+    });
   }
-});
+
+  // Check for saved audio preference
+  const audioEnabled = localStorage.getItem("audioEnabled");
+  if (audioEnabled === "true") {
+    elements.body.classList.add("sound-on");
+    if (elements.switchSound) {
+      elements.switchSound.checked = true;
+    }
+    playPause();
+  }
+}
 
 // Settings toggle - Simplified
 function settingToggle() {
@@ -72,21 +66,52 @@ function settingToggle() {
   elements.soundToggle.classList.toggle("soundmodeshow");
 }
 
-// Audio control - Simplified
+// Audio control - Improved
 function playPause() {
-  if (elements.switchSound.checked) {
+  const isPlaying = elements.body.classList.contains("sound-on");
+
+  if (!isPlaying) {
+    // Turn sound on
+    elements.body.classList.add("sound-on");
+    if (elements.switchSound) {
+      elements.switchSound.checked = true;
+    }
     elements.audio.play();
+    localStorage.setItem("audioEnabled", "true");
   } else {
+    // Turn sound off
+    elements.body.classList.remove("sound-on");
+    if (elements.switchSound) {
+      elements.switchSound.checked = false;
+    }
     elements.audio.pause();
+    localStorage.setItem("audioEnabled", "false");
   }
 }
 
-// Visual mode toggle - Using cached elements
+// Visual mode toggle - Enhanced
 function visualMode() {
-  elements.body.classList.toggle("light-mode");
+  const isLightMode = elements.body.classList.contains("light-mode");
+
+  if (!isLightMode) {
+    // Switch to light mode
+    elements.body.classList.add("light-mode");
+    localStorage.setItem("theme", "light");
+  } else {
+    // Switch to dark mode
+    elements.body.classList.remove("light-mode");
+    localStorage.setItem("theme", "dark");
+  }
+
+  // Toggle inverted elements
   document.querySelectorAll(".needtobeinvert").forEach((element) => {
     element.classList.toggle("invertapplied");
   });
+
+  // Update switch in settings panel if it exists
+  if (document.getElementById("switchforvisualmode")) {
+    document.getElementById("switchforvisualmode").checked = !isLightMode;
+  }
 }
 
 // Mobile menu toggles - Using cached elements
