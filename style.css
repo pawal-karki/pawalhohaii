@@ -90,20 +90,20 @@ html {
   cursor: default;
   --color-white: #fff;
   --color-black: #000;
-  --color-dark-mode: #0f172a; /* Updated darker blue */
-  --color-light-mode: #f8fafc; /* Updated lighter background */
+  --color-dark-mode: #0a1a40; /* Dark royal blue background */
+  --color-light-mode: #f8f9fc; /* Light blue-tinted background */
   --color-ddd-color: #ddd;
-  --color-gray: #94a3b8; /* Updated gray */
-  --color-purple: #7c3aed; /* Updated purple */
-  --color-light-purple: #a855f7; /* Updated light purple */
-  --color-light-blue: #38bdf8; /* Updated light blue */
+  --color-gray: #a08563; /* Golden-tinted gray */
+  --color-purple: #1e3a8a; /* Royal blue replacing purple */
+  --color-light-purple: #3b5dc9; /* Lighter royal blue */
+  --color-light-blue: #daa520; /* Golden color */
   --color-navbarBorder-dark: rgba(226, 226, 226, 0.07);
   --color-shadowDark: rgba(0, 0, 0, 0.2);
-  --static-heading-gradient-blue: #67e8f9; /* Updated gradient blue */
-  --static-heading-gradient-pink: #f9a8d4; /* Updated gradient pink */
-  --tech-stack-box-first-color: #1e293b; /* Updated box color */
-  --tech-stack-box-second-color: rgba(30, 41, 59, 0);
-  --tech-stack-box-border-color: #334155; /* Updated border color */
+  --static-heading-gradient-blue: #ffd700; /* Bright gold for gradient */
+  --static-heading-gradient-pink: #0047ab; /* Cobalt blue for gradient */
+  --tech-stack-box-first-color: #0d2252; /* Dark royal blue box */
+  --tech-stack-box-second-color: rgba(13, 34, 82, 0);
+  --tech-stack-box-border-color: #b8860b; /* Dark golden border */
 }
 
 #hello-friend,
@@ -178,17 +178,34 @@ html {
 }
 
 .light-mode {
-  --color-dark-mode: #f8fafc;
-  --color-black: #fff;
-  --color-white: #0f172a;
-  --color-ddd-color: rgb(31, 31, 31);
-  --color-navbarBorder-dark: #cbd5e1;
-  --static-heading-gradient-blue: #0891b2;
-  --static-heading-gradient-pink: #db2777;
-  --color-shadowDark: #e2e8f0;
-  --tech-stack-box-first-color: #f1f5f9;
-  --tech-stack-box-second-color: rgba(241, 245, 249, 0);
-  --tech-stack-box-border-color: #cbd5e1;
+  --color-dark-mode: #f4f5f7; /* Lighter grey background */
+  --color-black: #100f0f;
+  --color-white: #2d3748; /* Darker grey text (not pure black for less harshness) */
+  --color-ddd-color: #141415; /* Medium-dark grey */
+  --color-navbarBorder-dark: #e2e8f0; /* Subtle grey border */
+  --static-heading-gradient-blue: #2b4762; /* Grey-blue for gradient */
+  --static-heading-gradient-pink: #a0aec0; /* Grey-pink for gradient */
+  --color-shadowDark: #edf2f7; /* Very light grey shadow */
+  --tech-stack-box-first-color: #3e6e8e; /* Very light grey box */
+  --tech-stack-box-second-color: rgba(
+    247,
+    250,
+    252,
+    0
+  ); /* Transparent version */
+  --tech-stack-box-border-color: #e2e8f0; /* Light grey border */
+
+  /* Additional refined colors for better visual appeal */
+  --color-accent: #718096; /* Medium grey accent */
+  --color-accent-light: #a0aec0; /* Light grey accent */
+  --color-accent-hover: #4a5568; /* Darker grey for hover states */
+  --color-subtle-highlight: #e6e9ee; /* Very subtle highlight color */
+  --color-focus-ring: rgba(
+    160,
+    174,
+    192,
+    0.5
+  ); /* Focus ring with medium opacity */
 }
 
 .setting-container {
@@ -1376,7 +1393,7 @@ footer {
 }
 
 .ProjectDescription {
-  color: gray;
+  color: rgb(231, 189, 189);
   font-size: 1.7rem;
   font-weight: 400;
 }
