@@ -2204,8 +2204,8 @@ footer {
 }
 
 .toggle-btn {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   border: 2px solid var(--color-navbarBorder-dark);
   background: linear-gradient(
@@ -2221,41 +2221,17 @@ footer {
     box-shadow 0.3s ease, background-color 0.3s ease;
   position: relative;
   overflow: hidden;
+  color: var(--color-white);
+  font-size: 1.8rem;
 }
 
 .toggle-btn:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .toggle-btn:active {
   transform: translateY(0);
-}
-
-.toggle-icon {
-  width: 20px;
-  height: 20px;
-  display: block;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-.theme-icon {
-  background-image: url(src/png/crescent-moon\ \$\$1\$\$.png);
-}
-
-.sound-icon {
-  background-image: url(src/svg/sound-off.svg);
-}
-
-/* Visual indication of active state */
-.light-mode .theme-icon {
-  background-image: url(src/png/sun.png);
-}
-
-body.sound-on .sound-icon {
-  background-image: url(src/svg/sound-on.svg);
 }
 
 /* Toggle button animations */
@@ -2277,39 +2253,105 @@ body.sound-on .sound-icon {
   opacity: 0.3;
 }
 
+/* Theme button state */
+.light-mode .theme-toggle .fa-moon {
+  display: none;
+}
+
+.light-mode .theme-toggle::after {
+  content: "\f185";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+/* Sound button state */
+body.sound-on .sound-toggle .fa-volume-xmark {
+  display: none;
+}
+
+body.sound-on .sound-toggle::after {
+  content: "\f028";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
 /* Responsive adjustments */
 @media screen and (max-width: 998px) {
   .quick-toggles {
     position: fixed;
     top: 20px;
     right: 85px;
-    z-index: 9999;
+    z-index: 10000; /* Ensure it's always on top */
+    background: linear-gradient(
+      to bottom right,
+      var(--tech-stack-box-first-color),
+      var(--tech-stack-box-second-color)
+    );
+    padding: 12px;
+    border-radius: 40px;
+    border: 2px solid var(--color-tech-stack-box-border-color);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    gap: 15px;
   }
 
+  /* Make toggle buttons more visible and tappable */
   .toggle-btn {
-    width: 35px;
-    height: 35px;
+    width: 45px;
+    height: 45px;
+    font-size: 1.8rem;
+    margin: 0 2px;
+    border: 3px solid var(--color-light-purple);
   }
 
-  .toggle-icon {
-    width: 18px;
-    height: 18px;
+  /* Increase touch target area */
+  .toggle-btn::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
   }
 }
 
 @media screen and (max-width: 500px) {
   .quick-toggles {
-    right: 70px;
+    right: 15px;
     top: 15px;
+    padding: 10px;
+    gap: 15px;
+    border-width: 2px;
   }
 
   .toggle-btn {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.6rem;
   }
 
-  .toggle-icon {
-    width: 16px;
-    height: 16px;
+  /* Ensure toggle buttons don't overlap with hamburger */
+  .hamburger {
+    z-index: 9997;
   }
+
+  #hamburger-button {
+    margin-right: 110px; /* Make room for toggle buttons */
+  }
+}
+
+/* Touch state for mobile */
+.toggle-btn.touch-active {
+  transform: scale(0.9);
+  transition: transform 0.2s ease;
+  background: linear-gradient(
+    to bottom right,
+    var(--color-light-purple),
+    var(--tech-stack-box-first-color)
+  );
+  box-shadow: 0 0 0 4px var(--color-light-purple) inset;
+}
+
+/* Ensure buttons are visible in mobile menu */
+.show-toggle-menu .quick-toggles {
+  z-index: 10000;
 }

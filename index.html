@@ -5,9 +5,11 @@
   <link rel="dns-prefetch" href="https://unpkg.com">
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -26,6 +28,8 @@
 
   <title>Pawal Karki | Portfolio</title>
   <link rel="icon" type="image/x-icon" href="src/png/main-favicon.png" />
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <!-- aos cdn -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" media="print" onload="this.media='all'" />
   <!-- stylesheet -->
@@ -84,10 +88,10 @@
       <!-- Quick toggle buttons -->
       <div class="quick-toggles">
         <button class="toggle-btn theme-toggle" onclick="visualMode()" aria-label="Toggle dark/light mode">
-          <i class="toggle-icon theme-icon"></i>
+          <i class="fa-solid fa-moon"></i>
         </button>
         <button class="toggle-btn sound-toggle" onclick="playPause()" aria-label="Toggle sound">
-          <i class="toggle-icon sound-icon"></i>
+          <i class="fa-solid fa-volume-xmark"></i>
         </button>
       </div>
     </div>
@@ -98,7 +102,7 @@
     <!-- hamburger -->
     <div class="hamburger" id="hamburger" data-aos="fade">
       <div class="hamburgerbase">
-        <button id="hamburger-button" onclick="hamburgerMenu()" tabindex="0" aria-label="Menu Button">
+        <button id="hamburger-button" onclick="hamburgerMenu(event)" tabindex="0" aria-label="Menu Button">
           <span class="burger-bar" id="burger-bar1"></span>
           <span class="burger-bar" id="burger-bar2"></span>
           <span class="burger-bar" id="burger-bar3"></span>
@@ -236,7 +240,7 @@
               aria-label="settings for sound and appearance"></label>
 
             <div class="visualmodetogglebuttoncontainer" id="visualmodetogglebuttoncontainer">
-              <input type="checkbox" id="switchforvisualmode" onclick="visualmode()" />
+              <input type="checkbox" id="switchforvisualmode" onclick="visualMode()" />
               <label for="switchforvisualmode" id="labelforvisualmode" tabindex="0"
                 aria-label="switch appearance"></label>
             </div>
@@ -401,7 +405,7 @@
     
 
   <footer id="footer">
-    <button class="fas" id="backtotopbutton" onclick="scrolltoTopfunction()">
+    <button class="fas" id="backtotopbutton" onclick="scrollToTop()">
       <article aria-label="Back to top">&#8592;BACK TO TOP</article>
     </button>
     <div class="footer-background">
