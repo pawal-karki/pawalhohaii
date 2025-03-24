@@ -57,10 +57,81 @@ function initializeToggleStates() {
     }
     playPause();
   }
+
+  // Initialize mobile-friendly touch events
+  initMobileControls();
 }
 
-// Settings toggle - Simplified
-function settingToggle() {
+// Add touch-specific handling for mobile devices
+function initMobileControls() {
+  // Get toggle buttons
+  const themeBtn = document.querySelector(".theme-toggle");
+  const soundBtn = document.querySelector(".sound-toggle");
+
+  if (themeBtn && soundBtn) {
+    // Add active state class for touch feedback
+    ["touchstart", "mousedown"].forEach((eventType) => {
+      themeBtn.addEventListener(
+        eventType,
+        () => {
+          themeBtn.classList.add("touch-active");
+        },
+        { passive: true }
+      );
+
+      soundBtn.addEventListener(
+        eventType,
+        () => {
+          soundBtn.classList.add("touch-active");
+        },
+        { passive: true }
+      );
+    });
+
+    // Remove active state
+    ["touchend", "touchcancel", "mouseup", "mouseleave"].forEach(
+      (eventType) => {
+        themeBtn.addEventListener(
+          eventType,
+          () => {
+            themeBtn.classList.remove("touch-active");
+            // Small delay to ensure the click event has time to fire
+            setTimeout(() => themeBtn.blur(), 300);
+          },
+          { passive: true }
+        );
+
+        soundBtn.addEventListener(
+          eventType,
+          () => {
+            soundBtn.classList.remove("touch-active");
+            setTimeout(() => soundBtn.blur(), 300);
+          },
+          { passive: true }
+        );
+      }
+    );
+  }
+
+  // Make sure hamburger menu doesn't interfere with toggles
+  const hamburgerBtn = document.getElementById("hamburger-button");
+  if (hamburgerBtn) {
+    const togglesContainer = document.querySelector(".quick-toggles");
+
+    hamburgerBtn.addEventListener(
+      "click",
+      (e) => {
+        if (togglesContainer && togglesContainer.contains(e.target)) {
+          e.stopPropagation();
+        }
+      },
+      { passive: false }
+    );
+  }
+}
+
+// Settings toggle - Simplified and renamed to match HTML
+function settingtoggle() {
   elements.settingContainer.classList.toggle("settingactivate");
   elements.visualToggle.classList.toggle("visualmodeshow");
   elements.soundToggle.classList.toggle("soundmodeshow");
@@ -76,7 +147,18 @@ function playPause() {
     if (elements.switchSound) {
       elements.switchSound.checked = true;
     }
-    elements.audio.play();
+    elements.audio.play().catch((e) => {
+      console.warn("Audio play failed:", e);
+      // Handle autoplay restrictions
+      if (e.name === "NotAllowedError") {
+        // Visual feedback that sound couldn't be played
+        elements.body.classList.remove("sound-on");
+        if (elements.switchSound) {
+          elements.switchSound.checked = false;
+        }
+        localStorage.setItem("audioEnabled", "false");
+      }
+    });
     localStorage.setItem("audioEnabled", "true");
   } else {
     // Turn sound off
@@ -115,7 +197,17 @@ function visualMode() {
 }
 
 // Mobile menu toggles - Using cached elements
-function hamburgerMenu() {
+function hamburgerMenu(event) {
+  // Prevent interaction if the click was on toggle buttons
+  const togglesContainer = document.querySelector(".quick-toggles");
+  if (
+    togglesContainer &&
+    (event.target.closest(".quick-toggles") ||
+      event.target.closest(".toggle-btn"))
+  ) {
+    return; // Don't toggle menu if clicking on toggle buttons
+  }
+
   elements.body.classList.toggle("stopscrolling");
   elements.mobileMenu.classList.toggle("show-toggle-menu");
   elements.burgerBar1.classList.toggle("hamburger-animation1");
@@ -123,7 +215,7 @@ function hamburgerMenu() {
   elements.burgerBar3.classList.toggle("hamburger-animation3");
 }
 
-function hideMenuByLi() {
+function hidemenubyli() {
   elements.body.classList.toggle("stopscrolling");
   elements.mobileMenu.classList.remove("show-toggle-menu");
   elements.burgerBar1.classList.remove("hamburger-animation1");
