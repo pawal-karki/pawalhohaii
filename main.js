@@ -1,166 +1,251 @@
-// preloader script............
-var audio = document.getElementById("audioPlayer");
-var loader = document.getElementById("preloader");
-window.addEventListener("load", function () {
-  loader.style.display = "none";
-  document.querySelector('.hey').classList.add('popup');
-})
-
-// preloader script ends here.........
-
-// switch for setting
-function settingtoggle(){
-  document.getElementById("setting-container").classList.toggle('settingactivate');
-  document.getElementById("visualmodetogglebuttoncontainer").classList.toggle('visualmodeshow');
-  document.getElementById("soundtogglebuttoncontainer").classList.toggle('soundmodeshow');
-}
-function playpause() {
-  if (document.getElementById('switchforsound').checked == false) {
-    audio.pause();
-   }
-
- else{
-     audio.play();
- }
-  }
-
-  function visualmode(){
-    document.body.classList.toggle('light-mode');
-    var elements = document.querySelectorAll('.needtobeinvert');
-    elements.forEach(function(element) {
-        element.classList.toggle('invertapplied');
-    });
-
-
-  }
-let emptyArea = document.getElementById("emptyarea");
- let mobileTogglemenu = document.getElementById("mobiletogglemenu");
-// toggle menu by clicking on hamburger
-function hamburgerMenu() {
-    document.body.classList.toggle("stopscrolling");
- document.getElementById("mobiletogglemenu").classList.toggle("show-toggle-menu");
-document.getElementById("burger-bar1").classList.toggle("hamburger-animation1");
-document.getElementById("burger-bar2").classList.toggle("hamburger-animation2");
-document.getElementById("burger-bar3").classList.toggle("hamburger-animation3");
-}
-// close mobile toggle menu by clicking on LI
-function hidemenubyli(){
-document.body.classList.toggle("stopscrolling");
-document.getElementById("mobiletogglemenu").classList.remove("show-toggle-menu");
-document.getElementById("burger-bar1").classList.remove("hamburger-animation1");
-document.getElementById("burger-bar2").classList.remove("hamburger-animation2");
-document.getElementById("burger-bar3").classList.remove("hamburger-animation3");
-}
-
-const sections = document.querySelectorAll('section');
-const navLi = document.querySelectorAll('.navbar .navbar-tabs .navbar-tabs-ul li');
-const mobilenavLi = document.querySelectorAll('.mobiletogglemenu .mobile-navbar-tabs-ul li');
-
-window.addEventListener('scroll', ()=>{
-  let current = "";
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-    if(pageYOffset >= (sectionTop - 200)){
-      current = section.getAttribute('id');
-    }
-  })
-
-  mobilenavLi.forEach( li => {
-    li.classList.remove('activeThismobiletab');
-    if(li.classList.contains(current)){
-      li.classList.add('activeThismobiletab')
-    }
-  })
-navLi.forEach( li => {
-  li.classList.remove('activeThistab');
-  if(li.classList.contains(current)){
-    li.classList.add('activeThistab')
-  }
-})
-})
-console.log('%c Designed and Developed by Vinod Jangid ', 'background-image: linear-gradient(90deg,#8000ff,#6bc5f8); color: white;font-weight:900;font-size:1rem; padding:20px;');
-
-
-
-let mybutton = document.getElementById("backtotopbutton");
-window.onscroll = function(){
-  scrollFunction()
+// Caching DOM elements to avoid repeated lookups
+const elements = {
+  audio: document.getElementById("audioPlayer"),
+  loader: document.getElementById("preloader"),
+  settingContainer: document.getElementById("setting-container"),
+  visualToggle: document.getElementById("visualmodetogglebuttoncontainer"),
+  soundToggle: document.getElementById("soundtogglebuttoncontainer"),
+  switchSound: document.getElementById("switchforsound"),
+  body: document.body,
+  mobileMenu: document.getElementById("mobiletogglemenu"),
+  burgerBar1: document.getElementById("burger-bar1"),
+  burgerBar2: document.getElementById("burger-bar2"),
+  burgerBar3: document.getElementById("burger-bar3"),
+  backToTopButton: document.getElementById("backtotopbutton"),
+  sections: document.querySelectorAll("section"),
+  navLi: document.querySelectorAll(".navbar .navbar-tabs .navbar-tabs-ul li"),
+  mobileNavLi: document.querySelectorAll(
+    ".mobiletogglemenu .mobile-navbar-tabs-ul li"
+  ),
+  pupils: Array.from(document.getElementsByClassName("footer-pupil")),
+  themeButton: document.querySelector(".theme-toggle"),
+  soundButton: document.querySelector(".sound-toggle"),
 };
 
-function scrollFunction(){
-  if(document.body.scrollTop > 400 || document.documentElement.scrollTop > 400)
-  {
-    mybutton.style.display = "block";
-  }
-   else{
-      mybutton.style.display = "none";
-     
-      }
+// Preloader - Use event listener only when needed
+if (elements.loader) {
+  window.addEventListener(
+    "load",
+    () => {
+      elements.loader.style.display = "none";
+      document.querySelector(".hey")?.classList.add("popup");
+
+      // Initialize buttons state based on saved preferences
+      initializeToggleStates();
+    },
+    { once: true }
+  ); // Use once option to auto-remove listener after execution
 }
 
-function scrolltoTopfunction(){
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
+// Initialize toggle states based on stored preferences
+function initializeToggleStates() {
+  // Check for saved theme preference
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "light") {
+    elements.body.classList.add("light-mode");
+    document.querySelectorAll(".needtobeinvert").forEach((element) => {
+      element.classList.add("invertapplied");
+    });
+  }
+
+  // Check for saved audio preference
+  const audioEnabled = localStorage.getItem("audioEnabled");
+  if (audioEnabled === "true") {
+    elements.body.classList.add("sound-on");
+    if (elements.switchSound) {
+      elements.switchSound.checked = true;
+    }
+    playPause();
+  }
 }
-// document.addEventListener("contextmenu", function (e){
-//   e.preventDefault();
-// }, false);
-// https://github.com/vinodjangid07
-document.addEventListener("contextmenu", function(e){
-  if (e.target.nodeName === "IMG") {
+
+// Settings toggle - Simplified
+function settingToggle() {
+  elements.settingContainer.classList.toggle("settingactivate");
+  elements.visualToggle.classList.toggle("visualmodeshow");
+  elements.soundToggle.classList.toggle("soundmodeshow");
+}
+
+// Audio control - Improved
+function playPause() {
+  const isPlaying = elements.body.classList.contains("sound-on");
+
+  if (!isPlaying) {
+    // Turn sound on
+    elements.body.classList.add("sound-on");
+    if (elements.switchSound) {
+      elements.switchSound.checked = true;
+    }
+    elements.audio.play();
+    localStorage.setItem("audioEnabled", "true");
+  } else {
+    // Turn sound off
+    elements.body.classList.remove("sound-on");
+    if (elements.switchSound) {
+      elements.switchSound.checked = false;
+    }
+    elements.audio.pause();
+    localStorage.setItem("audioEnabled", "false");
+  }
+}
+
+// Visual mode toggle - Enhanced
+function visualMode() {
+  const isLightMode = elements.body.classList.contains("light-mode");
+
+  if (!isLightMode) {
+    // Switch to light mode
+    elements.body.classList.add("light-mode");
+    localStorage.setItem("theme", "light");
+  } else {
+    // Switch to dark mode
+    elements.body.classList.remove("light-mode");
+    localStorage.setItem("theme", "dark");
+  }
+
+  // Toggle inverted elements
+  document.querySelectorAll(".needtobeinvert").forEach((element) => {
+    element.classList.toggle("invertapplied");
+  });
+
+  // Update switch in settings panel if it exists
+  if (document.getElementById("switchforvisualmode")) {
+    document.getElementById("switchforvisualmode").checked = !isLightMode;
+  }
+}
+
+// Mobile menu toggles - Using cached elements
+function hamburgerMenu() {
+  elements.body.classList.toggle("stopscrolling");
+  elements.mobileMenu.classList.toggle("show-toggle-menu");
+  elements.burgerBar1.classList.toggle("hamburger-animation1");
+  elements.burgerBar2.classList.toggle("hamburger-animation2");
+  elements.burgerBar3.classList.toggle("hamburger-animation3");
+}
+
+function hideMenuByLi() {
+  elements.body.classList.toggle("stopscrolling");
+  elements.mobileMenu.classList.remove("show-toggle-menu");
+  elements.burgerBar1.classList.remove("hamburger-animation1");
+  elements.burgerBar2.classList.remove("hamburger-animation2");
+  elements.burgerBar3.classList.remove("hamburger-animation3");
+}
+
+// Scroll spy - Optimized with requestAnimationFrame
+let isScrolling = false;
+function handleScroll() {
+  if (!isScrolling) {
+    window.requestAnimationFrame(() => {
+      let current = "";
+      const scrollPosition = window.pageYOffset;
+
+      elements.sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        if (scrollPosition >= sectionTop - 200) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      elements.mobileNavLi.forEach((li) => {
+        li.classList.remove("activeThismobiletab");
+        if (li.classList.contains(current)) {
+          li.classList.add("activeThismobiletab");
+        }
+      });
+
+      elements.navLi.forEach((li) => {
+        li.classList.remove("activeThistab");
+        if (li.classList.contains(current)) {
+          li.classList.add("activeThistab");
+        }
+      });
+
+      isScrolling = false;
+    });
+    isScrolling = true;
+  }
+}
+
+// Back to top button
+function scrollFunction() {
+  if (document.documentElement.scrollTop > 400) {
+    elements.backToTopButton.style.display = "block";
+  } else {
+    elements.backToTopButton.style.display = "none";
+  }
+}
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}
+
+// Eye movement optimization
+const pupilConfig = {
+  startPoint: -10,
+  rangeX: 20,
+  rangeY: 15,
+  mouseXStart: 0,
+  mouseXEnd: window.innerWidth,
+  mouseYEnd: window.innerHeight,
+};
+
+// Use throttle for mousemove events
+let ticking = false;
+function handleMouseMove(event) {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      const fracX =
+        (event.clientX - pupilConfig.mouseXStart) /
+        (pupilConfig.mouseXEnd - pupilConfig.mouseXStart);
+      const fracY = event.clientY / pupilConfig.mouseYEnd;
+
+      const pupilX = pupilConfig.startPoint + fracX * pupilConfig.rangeX;
+      const pupilY = pupilConfig.startPoint + fracY * pupilConfig.rangeY;
+
+      const transform = `translate(${pupilX}px, ${pupilY}px)`;
+
+      elements.pupils.forEach((pupil) => {
+        pupil.style.transform = transform;
+      });
+
+      ticking = false;
+    });
+    ticking = true;
+  }
+}
+
+// Resize handler with debounce
+let resizeTimeout;
+function handleResize() {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    pupilConfig.mouseXEnd = window.innerWidth;
+    pupilConfig.mouseYEnd = window.innerHeight;
+  }, 250);
+}
+
+// Prevent context menu on images
+document.addEventListener(
+  "contextmenu",
+  (e) => {
+    if (e.target.nodeName === "IMG") {
       e.preventDefault();
-  }
-}, false);
+    }
+  },
+  { passive: true }
+);
 
+// Event listeners - Add passive flag where possible
+window.addEventListener("scroll", handleScroll, { passive: true });
+window.addEventListener("scroll", scrollFunction, { passive: true });
+window.addEventListener("mousemove", handleMouseMove, { passive: true });
+window.addEventListener("resize", handleResize, { passive: true });
 
-
-
-let Pupils = document.getElementsByClassName('footer-pupil');
-let pupilsArr = Array.from(Pupils);
-
-let pupilStartPoint = -10;
-let pupilRangeX = 20;
-let pupilRangeY = 15;
-
-// mouse X 
-let mouseXStartPoint = 0;
-let mouseXEndPoint = window.innerWidth;
-let currentXPosition = 0;
-let fracXValue = 0;
-
-
-// mouse Y position 
-let mouseYEndPoint = window.innerHeight;
-let currentYPosition = 0;
-let fracYValue = 0;
-
-let mouseXRange = mouseXEndPoint - mouseXStartPoint;
-
-const mouseMove = (event) => {
-    currentXPosition = event.clientX - mouseXStartPoint;
-    fracXValue = currentXPosition / mouseXRange;
-
-    currentYPosition = event.clientY;
-    fracYValue = currentYPosition / mouseYEndPoint;
- 
-    // footer
-    let pupilXCurrrentPosition = pupilStartPoint + (fracXValue * pupilRangeX);
-    let pupilYCurrrentPosition = pupilStartPoint + (fracYValue * pupilRangeY);
-
-    // footer
-    pupilsArr.forEach((curPupil) => {
-      curPupil.style.transform= `translate(${pupilXCurrrentPosition}px, ${pupilYCurrrentPosition}px)`;
-  })
-
-}
-
-const windowResize = (event) => {
-    mouseXEndPoint = window.innerWidth;
-    mouseYEndPoint = window.innerHeight;
-    mouseXRange = mouseXEndPoint - mouseXStartPoint;
-}
-
-
-window.addEventListener('mousemove', mouseMove);
-window.addEventListener('resize', windowResize);
+// Console signature
+console.log(
+  "%c Designed and Developed by Pawal Karki",
+  "background-image: linear-gradient(90deg,#8000ff,#6bc5f8); color: white;font-weight:900;font-size:1rem; padding:20px;"
+);
