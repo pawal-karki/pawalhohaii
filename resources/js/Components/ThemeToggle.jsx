@@ -5,7 +5,7 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // Warm the other theme's lazy skyline images so the wipe doesn't reveal an empty horizon.
 function preload(theme) {
-    const srcs = [...document.querySelectorAll(`.skyline-${theme}`)].map((img) => img.currentSrc || img.src);
+    const srcs = [...document.querySelectorAll(`.skyline-${theme}, .hero-sky-${theme} img`)].map((img) => img.currentSrc || img.src);
     return Promise.race([
         Promise.all(
             srcs.map((src) => {
@@ -14,7 +14,7 @@ function preload(theme) {
                 return img.decode().catch(() => {});
             }),
         ),
-        wait(450),
+        wait(150),
     ]);
 }
 

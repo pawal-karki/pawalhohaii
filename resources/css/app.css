@@ -90,7 +90,7 @@ html[data-shift]::view-transition-new(root) {
     mask-image: linear-gradient(to bottom, transparent 0 42%, #000 58% 100%);
     mask-size: 100% 300%;
     mask-repeat: no-repeat;
-    animation: theme-dawn 950ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: theme-dawn 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 html[data-shift='dusk']::view-transition-new(root) {
     mask-image: linear-gradient(to bottom, #000 0 42%, transparent 58% 100%);

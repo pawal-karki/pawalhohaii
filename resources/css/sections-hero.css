@@ -437,21 +437,28 @@
 :root:not([data-theme='light']) .hero-sky-light {
     display: none;
 }
-/* Background skyline: both images share one frame sized to the day image (2000x750) and sit on
-   its bottom edge, so light and dark take the same space and line up; the shorter night image
-   (2000x667) just starts a little lower, inside the faded top. The top fades into the page, and a
-   blur layer softens the upper part (strongest at the top, gone by the middle). */
+/* Background skyline: both themes share one frame (2000x750) and sit on its bottom edge. Each theme
+   has a sharp copy (buildings) and a copy blurred once with `filter` (not backdrop-filter, which
+   re-blurs on every frame something moves behind it), cross-faded so the top is soft and melts
+   into the page while the bottom stays crisp. */
 .hero-sky {
     aspect-ratio: 2000 / 750;
 }
-.hero-sky img {
-    mask-image: linear-gradient(to bottom, transparent, #000 28%);
-}
-.hero-sky-blur {
+.hero-sky-light,
+.hero-sky-dark {
     position: absolute;
-    inset: 0 0 auto;
-    height: 55%;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    mask-image: linear-gradient(to bottom, #000 25%, transparent);
+    inset: 0;
+}
+.hero-sky img {
+    position: absolute;
+    inset: auto 0 0;
+    width: 100%;
+    height: auto;
+}
+.hero-sky .is-sharp {
+    mask-image: linear-gradient(to bottom, transparent 22%, #000 55%);
+}
+.hero-sky .is-soft {
+    filter: blur(6px);
+    mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 32%, transparent 58%);
 }
