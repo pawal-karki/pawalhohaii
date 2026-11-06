@@ -437,10 +437,8 @@
 :root:not([data-theme='light']) .hero-sky-light {
     display: none;
 }
-/* Background skyline: both themes share one frame (2000x750) and sit on its bottom edge. Each theme
-   has a sharp copy (buildings) and a copy blurred once with `filter` (not backdrop-filter, which
-   re-blurs on every frame something moves behind it), cross-faded so the top is soft and melts
-   into the page while the bottom stays crisp. */
+/* Background skyline: both themes share one frame (2000x750) and sit on its bottom edge. No blur;
+   only the empty sky at the very top fades into the page so there is no hard edge. */
 .hero-sky {
     aspect-ratio: 2000 / 750;
 }
@@ -454,11 +452,5 @@
     inset: auto 0 0;
     width: 100%;
     height: auto;
-}
-.hero-sky .is-sharp {
-    mask-image: linear-gradient(to bottom, transparent 22%, #000 55%);
-}
-.hero-sky .is-soft {
-    filter: blur(6px);
-    mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 32%, transparent 58%);
+    mask-image: linear-gradient(to bottom, transparent, #000 20%);
 }

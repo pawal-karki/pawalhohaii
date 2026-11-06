@@ -67,11 +67,9 @@ export default function Hero() {
                     ['/images/nepal-skyline-colour.webp', 750, 'hero-sky-light'],
                     ['/images/nepal-skyline-colour-dark.webp', 750, 'hero-sky-dark'],
                 ].map(([src, height, theme]) => (
-                    // A sharp copy for the buildings and a pre-blurred copy that fades in toward the top.
                     // Both themes load up front (no lazy), so switching theme never waits for a download.
                     <span key={theme} className={theme}>
-                        <img src={asset(src)} alt="" width="2000" height={height} className="is-soft" />
-                        <img src={asset(src)} alt="" width="2000" height={height} className="is-sharp" />
+                        <img src={asset(src)} alt="" width="2000" height={height} />
                     </span>
                 ))}
             </div>
