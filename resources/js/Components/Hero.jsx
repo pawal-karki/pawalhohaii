@@ -58,16 +58,14 @@ export default function Hero() {
                 </Build>
             </div>
 
-            {/* Colour skyline, uncropped at its natural size: the same image in both themes, no blend or filter. */}
-            <img
-                src={asset('/images/nepal-skyline-colour.webp')}
-                alt=""
-                aria-hidden="true"
-                width="2000"
-                height="750"
-                fetchPriority="high"
-                className="pointer-events-none mt-12 block h-auto w-full"
-            />
+            {/* Colour skyline, uncropped at its natural size: day in light mode, night in dark mode, no blend or filter.
+                The hidden one (display: none + lazy) is never downloaded. */}
+            {[
+                ['/images/nepal-skyline-colour.webp', 'hero-sky-light'],
+                ['/images/nepal-skyline-colour-dark.webp', 'hero-sky-dark'],
+            ].map(([src, theme]) => (
+                <img key={theme} src={asset(src)} alt="" aria-hidden="true" width="2000" height="750" loading="lazy" className={`${theme} pointer-events-none mt-12 h-auto w-full`} />
+            ))}
         </section>
     );
 }

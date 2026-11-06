@@ -427,3 +427,13 @@
 .nepal-map > :is(svg, .hero-map-lines) {
     transition: opacity 0.9s ease;
 }
+
+/* Hero skyline: day image on light, night image on dark (shown as-is, uncropped). */
+.hero-sky-light,
+.hero-sky-dark {
+    display: block;
+}
+:root[data-theme='light'] .hero-sky-dark,
+:root:not([data-theme='light']) .hero-sky-light {
+    display: none;
+}
