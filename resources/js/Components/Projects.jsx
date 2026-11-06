@@ -21,9 +21,10 @@ export function StackChips({ keys, className = '' }) {
 }
 
 /**
- * Pixora demo: a mini site builder that assembles itself. A cursor drags a Button from the element
- * panel onto the page, then resizes the selected hero block while the size badge counts live.
- * Pure CSS loop (sections-work.css "Pixora canvas"); paused off-screen; static for reduced motion.
+ * Pixora demo: a clean mini site builder. A dotted canvas holds a small site (nav, hero with text and
+ * an image, three feature cards). The cursor drags a Button from the tool rail into the hero's empty
+ * button slot, then grabs the selected hero's corner and widens it while the size badge counts.
+ * Pure CSS loop ("Pixora canvas" in sections-work.css), paused off-screen; static for reduced motion.
  */
 function PixoraCanvas() {
     const ref = useRef(null);
@@ -42,38 +43,60 @@ function PixoraCanvas() {
                     <i />
                 </span>
                 <span className="pc-url">pawal.dev</span>
+                <span className="pc-publish">Publish</span>
             </div>
             <div className="pc-body">
-                <div className="pc-palette">
-                    {['Text', 'Image', 'Button'].map((label) => (
-                        <span key={label} className="pc-tool">
-                            <i className={`pc-glyph is-${label.toLowerCase()}`} />
-                            <span className="pc-label">{label}</span>
-                        </span>
-                    ))}
+                <div className="pc-rail">
+                    <span className="pc-tool">
+                        <b>T</b>
+                    </span>
+                    <span className="pc-tool">
+                        <svg viewBox="0 0 16 16">
+                            <rect x="2" y="3" width="12" height="10" rx="2" />
+                            <path d="M3.5 11.5 7 8l2 2 1.5-1.5 2 2" />
+                        </svg>
+                    </span>
+                    <span className="pc-tool is-button">
+                        <i />
+                    </span>
                 </div>
-                <div className="pc-nav">
-                    <i />
-                    <i />
-                    <i />
-                    <i />
+
+                <div className="pc-art">
+                    <div className="pc-nav">
+                        <i className="pc-logo" />
+                        <i />
+                        <i />
+                        <i />
+                    </div>
+                    <div className="pc-hero">
+                        <i className="pc-line is-title" />
+                        <i className="pc-line" />
+                        <i className="pc-line is-short" />
+                        <span className="pc-handle is-tl" />
+                        <span className="pc-handle is-tr" />
+                        <span className="pc-handle is-bl" />
+                        <span className="pc-handle is-br" />
+                        <span className="pc-badge" />
+                    </div>
+                    <span className="pc-slot" />
+                    <span className="pc-drop">Get started</span>
+                    <div className="pc-image">
+                        <svg viewBox="0 0 24 16">
+                            <path d="M1 15 8 6l4 5 3-3 8 7Z" />
+                            <circle cx="18" cy="4" r="2" />
+                        </svg>
+                    </div>
+                    <div className="pc-cards">
+                        {[0, 1, 2].map((n) => (
+                            <span key={n} className="pc-card">
+                                <i className="pc-icon" />
+                                <i className="pc-line" />
+                                <i className="pc-line is-short" />
+                            </span>
+                        ))}
+                    </div>
                 </div>
-                <div className="pc-hero">
-                    <i className="pc-line is-title" />
-                    <i className="pc-line" />
-                    <i className="pc-line is-short" />
-                    <span className="pc-handle is-tl" />
-                    <span className="pc-handle is-tr" />
-                    <span className="pc-handle is-bl" />
-                    <span className="pc-handle is-br" />
-                    <span className="pc-badge" />
-                </div>
-                <div className="pc-cards">
-                    <i />
-                    <i />
-                    <i />
-                </div>
-                <span className="pc-drop">Button</span>
+
                 <span className="pc-cursor">
                     <svg width="14" height="16" viewBox="0 0 18 20">
                         <path d="M1.5 1.5 16 9l-6.6 1.9L6.6 18Z" />
