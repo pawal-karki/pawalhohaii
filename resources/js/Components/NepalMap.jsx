@@ -102,9 +102,18 @@ export default function NepalMap() {
                         />
                     );
                 })}
-                {/* A dot per destination district; home gets the photo pin below instead. */}
+                {/* Home: the plain pin on phones (the photo pin below takes over from 640px).
+                    Static until the shapes load, then a dot per destination district. */}
+                {!districts && <circle cx="1040" cy="692" r="6" className="hero-map-pin" />}
                 {Object.entries(centres).map(([id, c]) =>
-                    id !== HOME && DESTINATIONS[id] ? <circle key={id} aria-hidden="true" cx={c.x} cy={c.y} r="3.5" className={`spot-dot${id === shown ? ' is-active' : ''}`} /> : null,
+                    id === HOME ? (
+                        <g key={id} aria-hidden="true">
+                            <circle cx={c.x} cy={c.y} r="6" className="hero-map-pin" />
+                            <circle cx={c.x} cy={c.y} r="6" className="hero-map-ping" />
+                        </g>
+                    ) : DESTINATIONS[id] ? (
+                        <circle key={id} aria-hidden="true" cx={c.x} cy={c.y} r="3.5" className={`spot-dot${id === shown ? ' is-active' : ''}`} />
+                    ) : null,
                 )}
             </svg>
 
@@ -144,7 +153,8 @@ export default function NepalMap() {
  * face box, coordinates), while the map is dimmed. Then the photo flies along an arc to Itahari,
  * shrinking into a round avatar pin, and the map lights up. Without JS, or with reduced motion, or
  * when the page loads already scrolled, or after the first view this session, the avatar simply sits
- * on the pin. The cursors building the hero wait for the landing (`photoLanded`).
+ * on the pin. Desktop and tablet only: phones keep the plain SVG pin. The cursors building the hero
+ * wait for the landing (`photoLanded`).
  */
 function MePin({ at, ready }) {
     const ref = useRef(null);
@@ -176,7 +186,8 @@ function MePin({ at, ready }) {
     useEffect(() => {
         const el = ref.current;
         const map = el.closest('.nepal-map');
-        if (matchMedia('(prefers-reduced-motion: reduce)').matches || window.scrollY > 200 || seenIntro()) {
+        // Phones keep the plain pin (CSS hides this one below 640px), so no intro there.
+        if (matchMedia('(max-width: 639px), (prefers-reduced-motion: reduce)').matches || window.scrollY > 200 || seenIntro()) {
             el.dataset.phase = 'landed';
             map.dataset.intro = 'done';
             return landed();

@@ -43,6 +43,42 @@
     stroke: var(--accent);
     stroke-width: 1.5;
 }
+.hero-map-pin {
+    fill: var(--accent);
+    stroke: var(--bg);
+    stroke-width: 2.5;
+}
+.hero-map-ping {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1.5;
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+    .hero-map-ping {
+        animation: map-ping 2.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+}
+@keyframes map-ping {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(4.5);
+        opacity: 0;
+    }
+}
+/* Phones keep this plain pin; from 640px the photo pin (.me-pin) replaces it. */
+@media (min-width: 640px) {
+    .hero-map-pin,
+    .hero-map-ping {
+        display: none;
+    }
+}
+
 /* "Currently at" live dot */
 .live-dot {
     position: relative;
@@ -111,6 +147,10 @@
 .nepal-map .spot-dot.is-active {
     opacity: 1;
 }
+.nepal-map .hero-map-pin,
+.nepal-map .hero-map-ping {
+    pointer-events: none;
+}
 
 /* Info card anchored to the district centre; flips side near the map's edges. */
 .map-card {
@@ -153,7 +193,12 @@
     }
 }
 
-/* ---------- Photo pin: intro "detection" card that flies to Itahari ---------- */
+/* ---------- Photo pin: intro "detection" card that flies to Itahari (640px and up) ---------- */
+@media (max-width: 639px) {
+    .me-pin {
+        display: none;
+    }
+}
 .me-pin {
     position: absolute;
     z-index: 4;
@@ -365,8 +410,8 @@
     z-index: 1;
     pointer-events: none;
 }
-/* The map stays dim behind the photo until the avatar lands (JS + motion only). */
-@media (prefers-reduced-motion: no-preference) {
+/* The map stays dim behind the photo until the avatar lands (JS + motion, 640px and up only). */
+@media (prefers-reduced-motion: no-preference) and (min-width: 640px) {
     html.js .nepal-map:not([data-intro='done']) > :is(svg, .hero-map-lines) {
         opacity: 0.25;
     }
