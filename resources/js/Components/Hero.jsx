@@ -65,7 +65,7 @@ export default function Hero() {
             <div aria-hidden="true" className="hero-sky pointer-events-none absolute inset-x-0 bottom-0 -z-20">
                 {[
                     ['/images/nepal-skyline-colour.webp', 750, 'hero-sky-light'],
-                    ['/images/nepal-skyline-colour-dark.webp', 667, 'hero-sky-dark'],
+                    ['/images/nepal-skyline-colour-dark.webp', 750, 'hero-sky-dark'],
                 ].map(([src, height, theme]) => (
                     <img key={theme} src={asset(src)} alt="" width="2000" height={height} loading="lazy" className={`${theme} absolute inset-x-0 bottom-0 h-auto w-full`} />
                 ))}
