@@ -26,6 +26,8 @@ jobs:
       CACHE_STORE: array
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.4'
@@ -38,6 +40,27 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: ./scripts/build-pages.sh
+      # The 3d branch (3D hero preview) is served from the same site at /3d. Pages has one site per repo,
+      # so it's built here into dist/3d. Pushing to 3d doesn't deploy: re-run this workflow
+      # (gh workflow run pages.yml) to refresh it.
+      - uses: actions/checkout@v4
+        with:
+          ref: 3d
+          path: 3d-src
+      - name: Build the 3d branch into dist/3d
+        working-directory: 3d-src
+        env:
+          APP_URL: https://www.pawal.com.np/3d
+          ASSET_URL: https://www.pawal.com.np/3d
+          VITE_PUBLIC_BASE: /3d
+          PORT: 8766
+        run: |
+          composer install --no-dev --no-interaction --prefer-dist
+          cp .env.example .env && php artisan key:generate
+          npm ci
+          npm run build
+          ./scripts/build-pages.sh
+          mv dist ../dist/3d
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
