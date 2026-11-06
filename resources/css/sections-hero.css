@@ -43,35 +43,6 @@
     stroke: var(--accent);
     stroke-width: 1.5;
 }
-.hero-map-pin {
-    fill: var(--accent);
-    stroke: var(--bg);
-    stroke-width: 2.5;
-}
-.hero-map-ping {
-    fill: none;
-    stroke: var(--accent);
-    stroke-width: 1.5;
-    transform-box: fill-box;
-    transform-origin: center;
-    opacity: 0;
-}
-@media (prefers-reduced-motion: no-preference) {
-    .hero-map-ping {
-        animation: map-ping 2.8s cubic-bezier(0, 0, 0.2, 1) infinite;
-    }
-}
-@keyframes map-ping {
-    0% {
-        transform: scale(1);
-        opacity: 0.7;
-    }
-    100% {
-        transform: scale(4.5);
-        opacity: 0;
-    }
-}
-
 /* "Currently at" live dot */
 .live-dot {
     position: relative;
@@ -140,10 +111,6 @@
 .nepal-map .spot-dot.is-active {
     opacity: 1;
 }
-.nepal-map .hero-map-pin,
-.nepal-map .hero-map-ping {
-    pointer-events: none;
-}
 
 /* Info card anchored to the district centre; flips side near the map's edges. */
 .map-card {
@@ -184,4 +151,229 @@
         opacity: 0;
         transform: translateY(4px);
     }
+}
+
+/* ---------- Photo pin: intro "detection" card that flies to Itahari ---------- */
+.me-pin {
+    position: absolute;
+    z-index: 4;
+    width: 44px;
+    height: 44px;
+    translate: -50% -50%;
+    border-radius: 22px;
+    pointer-events: none;
+    box-shadow:
+        0 0 0 2px var(--bg),
+        0 0 0 3.5px var(--accent),
+        var(--shadow);
+}
+.me-photo {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: inherit;
+}
+.me-pin img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 0;
+    /* Avatar: zoom to the face. */
+    scale: 2.1;
+    transform-origin: 50% 10%;
+    transition: scale 1.25s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.me-pin[data-phase='intro'] img {
+    scale: 1;
+}
+/* Landed: a soft accent ring keeps pulsing out from Itahari. */
+.me-pin::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 999px;
+    border: 1.5px solid var(--accent);
+    opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+    .me-pin[data-phase='landed']::after {
+        animation: me-ring 2.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+}
+@keyframes me-ring {
+    0% {
+        scale: 1;
+        opacity: 0.8;
+    }
+    100% {
+        scale: 2.6;
+        opacity: 0;
+    }
+}
+
+/* Landing label: pops up above the avatar right after the flight, then fades away. */
+.me-home {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 12px);
+    translate: -50% 0;
+    padding: 3px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--bg);
+    color: var(--fg);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    white-space: nowrap;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    pointer-events: none;
+}
+.me-pin[data-flew] .me-home {
+    animation: me-home 3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes me-home {
+    0% {
+        opacity: 0;
+        transform: translateY(6px) scale(0.96);
+    }
+    12%,
+    75% {
+        opacity: 1;
+        transform: none;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+}
+
+/* Detection overlay: only while the intro card is showing. */
+.me-bracket,
+.me-scan,
+.me-face,
+.me-caption {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.35s;
+    pointer-events: none;
+}
+.me-pin[data-phase='intro'] :is(.me-bracket, .me-scan, .me-face, .me-caption) {
+    opacity: 1;
+}
+.me-bracket {
+    width: 18px;
+    height: 18px;
+    border: 0 solid var(--accent-text);
+}
+.me-bracket.is-tl {
+    top: -6px;
+    left: -6px;
+    border-width: 2px 0 0 2px;
+    border-top-left-radius: 6px;
+}
+.me-bracket.is-tr {
+    top: -6px;
+    right: -6px;
+    border-width: 2px 2px 0 0;
+    border-top-right-radius: 6px;
+}
+.me-bracket.is-bl {
+    bottom: -6px;
+    left: -6px;
+    border-width: 0 0 2px 2px;
+    border-bottom-left-radius: 6px;
+}
+.me-bracket.is-br {
+    bottom: -6px;
+    right: -6px;
+    border-width: 0 2px 2px 0;
+    border-bottom-right-radius: 6px;
+}
+.me-scan {
+    inset-inline: 0;
+    top: 0;
+    height: 30%;
+    background: linear-gradient(to bottom, transparent, color-mix(in oklab, var(--accent) 35%, transparent));
+    border-bottom: 1.5px solid var(--accent-text);
+    animation: me-scan 1.6s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+}
+@keyframes me-scan {
+    to {
+        top: 70%;
+    }
+}
+.me-face {
+    left: 36%;
+    top: 4%;
+    width: 30%;
+    height: 27%;
+    border: 1.5px solid var(--accent-text);
+    border-radius: 6px;
+    animation: me-lock 0.5s 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.me-face span {
+    position: absolute;
+    left: -1.5px;
+    bottom: calc(100% + 3px);
+    padding: 1px 5px;
+    border-radius: 4px;
+    background: var(--accent);
+    color: #fff;
+    font: 500 10px/14px var(--font-mono);
+    white-space: nowrap;
+}
+@keyframes me-lock {
+    from {
+        scale: 1.6;
+        opacity: 0;
+    }
+}
+.me-caption {
+    left: 50%;
+    top: calc(100% + 14px);
+    translate: -50% 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 9px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--bg);
+    color: var(--muted, currentColor);
+    font: 500 10.5px/14px var(--font-mono);
+    white-space: nowrap;
+    box-shadow: var(--shadow);
+}
+.me-caption i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: blink-dot 0.8s steps(1) infinite;
+}
+@keyframes blink-dot {
+    50% {
+        opacity: 0.2;
+    }
+}
+
+/* While the photo shows and flies, lift the (dimmed) map above the hero text so the photo is never
+   hidden behind it; it drops back once the avatar has landed. */
+.hero-map:has(.me-pin:is([data-phase='intro'], [data-phase='fly'])) {
+    z-index: 1;
+    pointer-events: none;
+}
+/* The map stays dim behind the photo until the avatar lands (JS + motion only). */
+@media (prefers-reduced-motion: no-preference) {
+    html.js .nepal-map:not([data-intro='done']) > :is(svg, .hero-map-lines) {
+        opacity: 0.25;
+    }
+    html.js .me-pin:not([data-phase]) {
+        opacity: 0;
+    }
+}
+.nepal-map > :is(svg, .hero-map-lines) {
+    transition: opacity 0.9s ease;
 }

@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
 import Build from './Build';
 import { MailIcon, SocialLinks } from './Contact';
-import NepalMap from './NepalMap';
+import NepalMap, { photoLanded } from './NepalMap';
 import { experience, profile } from '../content';
 import { startFollowing } from '../swarm';
 import { asset } from '../asset';
@@ -19,7 +19,7 @@ export default function Hero() {
 
     return (
         <section id="top" ref={ref} className="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-32 pb-44 sm:pb-52">
-            <motion.div style={{ y: mapY }} className="hero-map absolute top-[12%] right-[-45%] -z-10 aspect-[1240/780] w-[150vw] sm:top-[14%] sm:right-[-10%] sm:w-[min(95vw,900px)] xl:right-[-2%]">
+            <motion.div style={{ y: mapY }} className="hero-map absolute top-[-25vw] right-[-4%] -z-10 aspect-[1240/780] w-[150vw] sm:top-[14%] sm:right-[-10%] sm:w-[min(95vw,900px)] xl:right-[-2%]">
                 <NepalMap />
             </motion.div>
             {/* One skyline per theme; the hidden one (display: none + lazy) is never downloaded. */}
@@ -54,7 +54,7 @@ export default function Hero() {
                     {profile.role} <span aria-hidden="true">·</span> {profile.location}
                 </p>
 
-                <Build title={profile.headline} heading="p" delay={150} onBuilt={startFollowing} className="mt-10 max-w-2xl" headingClass="text-[clamp(1.375rem,2.6vw,1.875rem)] leading-snug font-medium tracking-[-0.02em] text-fg" bodyClass="mt-4">
+                <Build title={profile.headline} heading="p" after={photoLanded} delay={150} onBuilt={startFollowing} className="mt-10 max-w-2xl" headingClass="text-[clamp(1.375rem,2.6vw,1.875rem)] leading-snug font-medium tracking-[-0.02em] text-fg" bodyClass="mt-4">
                     <p className="text-base text-muted sm:text-lg">{profile.intro}</p>
                     <div className="mt-8 flex flex-wrap items-center gap-3">
                         <a href="#work" className="inline-flex items-center gap-2 rounded-full bg-fg px-5 py-2.5 font-medium text-bg transition-opacity hover:opacity-85">

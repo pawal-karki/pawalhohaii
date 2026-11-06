@@ -11,7 +11,7 @@ const LATE_MS = 3000;
  * badge), types the heading, then the body fades in. Server-rendered content is complete; the
  * hiding only happens via CSS under `html.js` + no reduced-motion, and every path ends in data-stage="done".
  */
-export default function Build({ as: Tag = 'div', title, heading: H = 'h2', headingClass = '', bodyClass = '', className = '', delay = 0, onBuilt, children, ...rest }) {
+export default function Build({ as: Tag = 'div', title, heading: H = 'h2', headingClass = '', bodyClass = '', className = '', delay = 0, after, onBuilt, children, ...rest }) {
     const ref = useRef(null);
     const frame = useRef(null);
     const badge = useRef(null);
@@ -62,6 +62,8 @@ export default function Build({ as: Tag = 'div', title, heading: H = 'h2', headi
         };
 
         async function run() {
+            await after; // optional promise to wait for first, e.g. the hero photo intro
+            if (over) return;
             // Whatever happens (stalled timers, lost cursor, hidden tab), the box shows up.
             watchdog = setTimeout(finish, delay + 2600);
             await wait(delay);
