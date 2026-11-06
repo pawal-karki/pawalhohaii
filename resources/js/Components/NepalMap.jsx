@@ -117,7 +117,8 @@ export default function NepalMap() {
                 )}
             </svg>
 
-            <MePin at={pct(centres[HOME] || HOME_FALLBACK)} ready={!!centres[HOME]} />
+            {/* The avatar covers most of Sunsari, so hovering it opens Sunsari's card (with the photo). */}
+            <MePin at={pct(centres[HOME] || HOME_FALLBACK)} ready={!!centres[HOME]} onHover={(on) => setActive(on ? HOME : null)} />
 
             {info && at && (
                 <div
@@ -125,8 +126,10 @@ export default function NepalMap() {
                     className="map-card"
                     data-side={(at.x - VIEW.x) / VIEW.w > 0.62 ? 'right' : (at.x - VIEW.x) / VIEW.w < 0.3 ? 'left' : 'center'}
                     data-below={(at.y - VIEW.y) / VIEW.h < 0.3 || undefined}
+                    data-home={info.id === HOME || undefined}
                     style={{ left: `${((at.x - VIEW.x) / VIEW.w) * 100}%`, top: `${((at.y - VIEW.y) / VIEW.h) * 100}%` }}
                 >
+                    {info.id === HOME && <img src={PHOTO} alt="Pawal Karki Dholi" width="480" height="600" className="me-card-photo mb-3 aspect-[4/5] w-52 rounded-lg object-cover object-top" />}
                     <p className="text-sm font-semibold text-fg">
                         {info.name}
                         {info.id === HOME && <span className="ml-2 rounded-full bg-accent-soft px-1.5 py-0.5 text-[11px] font-medium text-accent">Home</span>}
@@ -156,7 +159,7 @@ export default function NepalMap() {
  * on the pin. Desktop and tablet only: phones keep the plain SVG pin. The cursors building the hero
  * wait for the landing (`photoLanded`).
  */
-function MePin({ at, ready }) {
+function MePin({ at, ready, onHover }) {
     const ref = useRef(null);
     const target = useRef(at);
     target.current = at;
@@ -222,7 +225,14 @@ function MePin({ at, ready }) {
 
     // Constant style so React never overwrites the positions the effects set.
     return (
-        <div ref={ref} className="me-pin" aria-hidden="true" style={START_STYLE}>
+        <div
+            ref={ref}
+            className="me-pin"
+            aria-hidden="true"
+            style={START_STYLE}
+            onPointerEnter={(e) => e.pointerType === 'mouse' && onHover(true)}
+            onPointerLeave={() => onHover(false)}
+        >
             <span className="me-photo">
                 <img src={PHOTO} alt="" width="480" height="600" />
                 <span className="me-scan" />
@@ -238,6 +248,7 @@ function MePin({ at, ready }) {
                 <i /> Locating · Itahari, Nepal · 26.66°N 87.27°E
             </span>
             <span className="me-home">Itahari · Home</span>
+
         </div>
     );
 }

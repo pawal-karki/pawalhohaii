@@ -164,22 +164,22 @@
     background: var(--bg);
     box-shadow: var(--shadow);
     pointer-events: none;
-    translate: -50% calc(-100% - 14px);
+    translate: -50% calc(-100% - var(--gap, 14px));
 }
 .map-card[data-side='right'] {
-    translate: calc(-100% + 24px) calc(-100% - 14px);
+    translate: calc(-100% + 24px) calc(-100% - var(--gap, 14px));
 }
 .map-card[data-side='left'] {
-    translate: -24px calc(-100% - 14px);
+    translate: -24px calc(-100% - var(--gap, 14px));
 }
 .map-card[data-below] {
-    translate: -50% 14px;
+    translate: -50% var(--gap, 14px);
 }
 .map-card[data-below][data-side='right'] {
-    translate: calc(-100% + 24px) 14px;
+    translate: calc(-100% + 24px) var(--gap, 14px);
 }
 .map-card[data-below][data-side='left'] {
-    translate: -24px 14px;
+    translate: -24px var(--gap, 14px);
 }
 @media (prefers-reduced-motion: no-preference) {
     .map-card {
@@ -292,6 +292,18 @@
         opacity: 0;
         transform: translateY(-4px);
     }
+}
+
+/* Landed avatar is hoverable: it opens Sunsari's card (see NepalMap). */
+.me-pin[data-phase='landed'] {
+    pointer-events: auto;
+}
+/* The photo card for home sits a little higher so it clears the avatar. */
+.map-card[data-home] {
+    --gap: 34px;
+}
+.me-pin[data-phase='landed']:hover .me-home {
+    visibility: hidden;
 }
 
 /* Detection overlay: only while the intro card is showing. */
