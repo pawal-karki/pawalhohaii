@@ -9,12 +9,12 @@
     @php($description = 'Pawal Karki Dholi, full-stack developer in Itahari, Nepal. Laravel and PHP on the back, Next.js and TypeScript on the front; currently building AI-assisted reporting and compliance features at Vetted Work.')
     <meta name="description" content="{{ $description }}">
     <meta name="author" content="Pawal Karki Dholi">
-    <link rel="canonical" href="{{ url('/') }}">
+    <link rel="canonical" href="{{ rtrim(config('app.url'), '/') }}/">
     <meta property="og:type" content="profile">
     <meta property="og:site_name" content="Pawal Karki Dholi">
     <meta property="og:title" content="Pawal Karki Dholi — Full-stack developer">
     <meta property="og:description" content="{{ $description }}">
-    <meta property="og:url" content="{{ url('/') }}">
+    <meta property="og:url" content="{{ rtrim(config('app.url'), '/') }}/">
     <meta property="profile:first_name" content="Pawal">
     <meta property="profile:last_name" content="Karki Dholi">
     <meta name="twitter:card" content="summary">

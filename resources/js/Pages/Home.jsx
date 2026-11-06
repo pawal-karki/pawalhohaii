@@ -10,6 +10,7 @@ import Skills from '../Components/Skills';
 import About from '../Components/About';
 import Contact, { SocialLinks } from '../Components/Contact';
 import { profile } from '../content';
+import { asset } from '../asset';
 
 const NAV = [
     ['Work', 'work'],
@@ -169,8 +170,8 @@ export default function Home() {
             </main>
             <footer className="relative isolate overflow-hidden border-t border-line">
                 {[
-                    ['/images/nepal-skyline-reflection.jpg', 660, 'skyline-light'],
-                    ['/images/nepal-skyline-reflection-dark.jpg', 620, 'skyline-dark'],
+                    [asset('/images/nepal-skyline-reflection.jpg'), 660, 'skyline-light'],
+                    [asset('/images/nepal-skyline-reflection-dark.jpg'), 620, 'skyline-dark'],
                 ].map(([src, height, theme]) => (
                     <img
                         key={theme}

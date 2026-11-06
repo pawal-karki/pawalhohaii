@@ -1,8 +1,9 @@
 import { useLayoutEffect, useRef, useState, useEffect } from 'react';
 import { DESTINATIONS } from '../content';
+import { asset } from '../asset';
 
 const VIEW = { x: 0, y: 25, w: 1240, h: 780 };
-const MAP_MASK = 'url(/images/nepal-districts.svg) center / contain no-repeat';
+const MAP_MASK = `url(${asset('/images/nepal-districts.svg')}) center / contain no-repeat`;
 const HOME = 'sunsari';
 
 /**
@@ -20,7 +21,7 @@ export default function NepalMap() {
 
     useEffect(() => {
         let alive = true;
-        fetch('/data/nepal-districts.json')
+        fetch(asset('/data/nepal-districts.json'))
             .then((r) => r.json())
             .then((d) => alive && setDistricts(d))
             .catch(() => {});

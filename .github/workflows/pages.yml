@@ -1,0 +1,53 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      # Served from the custom domain root. On <user>.github.io/<repo> instead, set
+      # ASSET_URL and VITE_PUBLIC_BASE to /<repo>.
+      APP_URL: https://www.pawal.com.np
+      ASSET_URL: https://www.pawal.com.np
+      SESSION_DRIVER: array
+      CACHE_STORE: array
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: composer install --no-dev --no-interaction --prefer-dist
+      - run: cp .env.example .env && php artisan key:generate
+      - run: npm ci
+      - run: npm run build
+      - run: ./scripts/build-pages.sh
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

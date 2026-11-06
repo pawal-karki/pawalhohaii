@@ -3,6 +3,7 @@ import { LayoutGroup, MotionConfig, motion } from 'motion/react';
 import Build from './Build';
 import StackIcon from './StackIcon';
 import { STACK, projects } from '../content';
+import { asset } from '../asset';
 
 const spring = { type: 'spring', stiffness: 300, damping: 34 };
 
@@ -179,7 +180,7 @@ function SmartTubeTv() {
     return (
         <figure className="tv">
             <div className="tv-screen">
-                <img src="/images/projects/smarttube-home.webp" alt="SmartTube home screen on a TV: sidebar, search and recommended videos" width="1600" height="900" loading="lazy" />
+                <img src={asset('/images/projects/smarttube-home.webp')} alt="SmartTube home screen on a TV: sidebar, search and recommended videos" width="1600" height="900" loading="lazy" />
                 <span aria-hidden="true" className="tv-focus" />
             </div>
             <span aria-hidden="true" className="tv-stand" />

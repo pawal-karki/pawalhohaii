@@ -1,3 +1,4 @@
+import { asset } from './asset';
 // Everything on the page reads from here. Source: portfolio-assets/profile.json (from the CV).
 // Stack keys match /public/logos/stack/<key>.svg (Simple Icons).
 
@@ -80,7 +81,7 @@ export const profile = {
     intro: 'Laravel and PHP on the back, Next.js and TypeScript on the front. Right now I add AI-assisted reporting and compliance features to a live vendor-management platform at Vetted Work, and I built Pixora, a drag-and-drop website builder and CRM.',
     email: 'pawal.atwork@gmail.com',
     phone: '9765378853',
-    cv: '/Pawal-Karki-CV.pdf',
+    cv: asset('/Pawal-Karki-CV.pdf'),
     links: [
         { label: 'GitHub', href: 'https://github.com/pawal-karki', icon: 'github' },
         { label: 'LinkedIn', href: 'https://linkedin.com/in/pawal-karki' },
@@ -93,7 +94,7 @@ export const projects = [
         slug: 'pixora',
         title: 'Pixora',
         featured: true,
-        logo: '/logos/projects/pixora.png',
+        logo: asset('/logos/projects/pixora.png'),
         year: '2025',
         summary: 'Drag-and-drop website builder and CRM platform.',
         stack: ['nextdotjs', 'typescript', 'tailwindcss', 'prisma', 'mysql', 'clerk', 'stripe', 'vercel'],
@@ -125,7 +126,7 @@ export const projects = [
         slug: 'vetted-work',
         title: 'Vetted Work',
         year: '2026',
-        org: { name: 'Vetted Work', logo: '/logos/company/vetted-work.png' },
+        org: { name: 'Vetted Work', logo: asset('/logos/company/vetted-work.png') },
         summary: 'Vendor-management and safety-compliance SaaS, with an AI assistant over live data.',
         stack: ['laravel', 'php', 'mysql', 'mongodb', 'anthropic'],
         details: [
@@ -139,9 +140,9 @@ export const projects = [
     {
         slug: 'salonflow',
         title: 'SalonFlow',
-        logo: '/logos/projects/salonflow.png',
+        logo: asset('/logos/projects/salonflow.png'),
         live: 'https://salonflow.tech/',
-        org: { name: 'TCL Global', logo: '/logos/company/tcl-global.png' },
+        org: { name: 'TCL Global', logo: asset('/logos/company/tcl-global.png') },
         summary: 'SaaS product website for salon, spa, medspa, wellness and fitness businesses.',
         stack: ['nextdotjs', 'react', 'typescript', 'tailwindcss', 'radixui', 'framer'],
         details: [
@@ -200,8 +201,8 @@ export const experience = [
         when: '2026 — now',
         role: 'Laravel Developer',
         org: 'Vetted Work',
-        logo: '/logos/company/vetted-work.png',
-        logoDark: '/logos/company/vetted-work-white.svg',
+        logo: asset('/logos/company/vetted-work.png'),
+        logoDark: asset('/logos/company/vetted-work-white.svg'),
         text: 'Vendor-management and safety-compliance SaaS.',
         stack: ['laravel', 'php', 'mysql', 'mongodb', 'anthropic'],
         highlights: [
@@ -215,7 +216,7 @@ export const experience = [
         when: 'Jul — Aug 2026',
         role: 'Frontend Developer',
         org: 'TCL Global',
-        logo: '/logos/company/tcl-global.png',
+        logo: asset('/logos/company/tcl-global.png'),
         text: 'Contract · Remote, United States',
         stack: ['nextdotjs', 'react', 'typescript', 'tailwindcss', 'radixui', 'framer'],
         highlights: [
@@ -229,7 +230,7 @@ export const experience = [
         when: '2025',
         role: 'Laravel Developer',
         org: 'Kyanite Software',
-        logo: '/logos/company/kyanite-software.png',
+        logo: asset('/logos/company/kyanite-software.png'),
         text: 'Jun – Oct 2025 · Nepal',
         stack: ['laravel', 'mysql', 'wordpress'],
         highlights: [
@@ -248,8 +249,8 @@ export const skills = [
 ];
 
 export const education = [
-    { when: '2023 — now', title: 'BSc (Hons) Computing', org: 'Itahari International College · London Metropolitan University', logo: '/logos/company/iic.png' },
-    { when: '2021 — 2023', title: 'Higher Secondary +2 Science', org: 'Koshi Saint James Secondary College', logo: '/logos/company/koshi-saint-james-emblem.png' },
+    { when: '2023 — now', title: 'BSc (Hons) Computing', org: 'Itahari International College · London Metropolitan University', logo: asset('/logos/company/iic.png') },
+    { when: '2021 — 2023', title: 'Higher Secondary +2 Science', org: 'Koshi Saint James Secondary College', logo: asset('/logos/company/koshi-saint-james-emblem.png') },
 ];
 
 export const certificates = [

@@ -5,6 +5,7 @@ import { MailIcon, SocialLinks } from './Contact';
 import NepalMap from './NepalMap';
 import { experience, profile } from '../content';
 import { startFollowing } from '../swarm';
+import { asset } from '../asset';
 
 
 const now = experience[0];
@@ -23,8 +24,8 @@ export default function Hero() {
             </motion.div>
             {/* One skyline per theme; the hidden one (display: none + lazy) is never downloaded. */}
             {[
-                ['/images/nepal-skyline.jpg', 458, 'skyline-light'],
-                ['/images/nepal-skyline-dark.jpg', 398, 'skyline-dark'],
+                [asset('/images/nepal-skyline.jpg'), 458, 'skyline-light'],
+                [asset('/images/nepal-skyline-dark.jpg'), 398, 'skyline-dark'],
             ].map(([src, height, theme]) => (
                 <motion.img
                     key={theme}

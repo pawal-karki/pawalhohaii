@@ -1,8 +1,9 @@
 import { STACK } from '../content';
+import { asset } from '../asset';
 
 /** Monochrome Simple Icons SVG from /logos/stack, tinted with currentColor via CSS mask. */
 export default function StackIcon({ name, className = 'size-4', label = false }) {
-    const mask = `url(/logos/stack/${name}.svg) center / contain no-repeat`;
+    const mask = `url(${asset(`/logos/stack/${name}.svg`)}) center / contain no-repeat`;
     return (
         <span
             role={label ? 'img' : undefined}
