@@ -64,10 +64,10 @@ export default function Hero() {
                 the image's 37.5vw height) keeps the buildings below the text; only sky and peaks sit behind it. */}
             <div aria-hidden="true" className="hero-sky pointer-events-none absolute inset-x-0 bottom-0 -z-20">
                 {[
-                    ['/images/nepal-skyline-colour.webp', 'hero-sky-light'],
-                    ['/images/nepal-skyline-colour-dark.webp', 'hero-sky-dark'],
-                ].map(([src, theme]) => (
-                    <img key={theme} src={asset(src)} alt="" width="2000" height="750" loading="lazy" className={`${theme} h-auto w-full`} />
+                    ['/images/nepal-skyline-colour.webp', 750, 'hero-sky-light'],
+                    ['/images/nepal-skyline-colour-dark.webp', 667, 'hero-sky-dark'],
+                ].map(([src, height, theme]) => (
+                    <img key={theme} src={asset(src)} alt="" width="2000" height={height} loading="lazy" className={`${theme} h-auto w-full`} />
                 ))}
                 <div className="hero-sky-blur" />
             </div>
