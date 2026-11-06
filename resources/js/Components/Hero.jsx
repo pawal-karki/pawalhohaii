@@ -17,12 +17,12 @@ export default function Hero() {
     const mapY = useTransform(scrollYProgress, [0, 1], [0, still ? 0 : 60]);
 
     return (
-        <section id="top" ref={ref} className="relative isolate flex min-h-[100svh] flex-col overflow-hidden pt-32">
+        <section id="top" ref={ref} className="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-32 pb-[32vw]">
             <motion.div style={{ y: mapY }} className="hero-map absolute top-28 right-[-45%] -z-10 aspect-[1240/780] w-[150vw] sm:top-32 sm:right-[-10%] sm:w-[min(95vw,900px)] xl:right-[-2%]">
                 <NepalMap />
             </motion.div>
             {/* Pointer events pass through the empty space here so the map behind stays explorable. */}
-            <div className="pointer-events-none mx-auto my-auto w-full max-w-6xl px-5 *:pointer-events-auto sm:px-8">
+            <div className="pointer-events-none mx-auto w-full max-w-6xl px-5 *:pointer-events-auto sm:px-8">
                 <a href="#experience" className="group inline-flex items-center gap-2.5 rounded-full border border-line bg-bg py-1 pr-3.5 pl-3 text-sm text-muted transition-colors hover:border-line-strong hover:bg-surface-2">
                     <span className="live-dot" aria-hidden="true" />
                     <span>
@@ -58,14 +58,19 @@ export default function Hero() {
                 </Build>
             </div>
 
-            {/* Colour skyline, uncropped at its natural size: day in light mode, night in dark mode, no blend or filter.
-                The hidden one (display: none + lazy) is never downloaded. */}
-            {[
-                ['/images/nepal-skyline-colour.webp', 'hero-sky-light'],
-                ['/images/nepal-skyline-colour-dark.webp', 'hero-sky-dark'],
-            ].map(([src, theme]) => (
-                <img key={theme} src={asset(src)} alt="" aria-hidden="true" width="2000" height="750" loading="lazy" className={`${theme} pointer-events-none relative -z-20 mt-12 h-auto w-full`} />
-            ))}
+            {/* Background skyline, full image at its natural size along the bottom of the hero: day in light
+                mode, night in dark mode (the hidden one is never downloaded). Its top softly blurs and fades
+                into the page so the text above stays readable. The section's bottom padding (32vw, about 85% of
+                the image's 37.5vw height) keeps the buildings below the text; only sky and peaks sit behind it. */}
+            <div aria-hidden="true" className="hero-sky pointer-events-none absolute inset-x-0 bottom-0 -z-20">
+                {[
+                    ['/images/nepal-skyline-colour.webp', 'hero-sky-light'],
+                    ['/images/nepal-skyline-colour-dark.webp', 'hero-sky-dark'],
+                ].map(([src, theme]) => (
+                    <img key={theme} src={asset(src)} alt="" width="2000" height="750" loading="lazy" className={`${theme} h-auto w-full`} />
+                ))}
+                <div className="hero-sky-blur" />
+            </div>
         </section>
     );
 }
