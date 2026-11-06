@@ -14,12 +14,6 @@
     <pattern id="halftone" width="22" height="22" patternUnits="userSpaceOnUse">
       <circle cx="4" cy="4" r="2.2" fill="#5faeb9" opacity=".12"/>
     </pattern>
-    <filter id="typeShadow" x="-8%" y="-8%" width="116%" height="120%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="1.3" result="blur"/>
-      <feOffset dy="2" result="offset"/>
-      <feComponentTransfer><feFuncA type="linear" slope=".14"/></feComponentTransfer>
-      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
   </defs>
 
   <rect width="1600" height="850" fill="url(#background)"/>
@@ -32,8 +26,11 @@
   <path d="M115 354 H1485" stroke="#4b9eaa" stroke-width="2" opacity=".42"/>
 
   <!-- AAA identity -->
+  <!-- Shadow as a vector copy (an SVG filter here rasterises and blurs the type when scaled down) -->
+  <text x="105" y="596" fill="#000" fill-opacity=".14" font-family="Arial, Helvetica, sans-serif"
+        font-size="270" font-weight="900" letter-spacing="-14">AAA</text>
   <text x="105" y="594" fill="url(#aaaBlue)" font-family="Arial, Helvetica, sans-serif"
-        font-size="270" font-weight="900" letter-spacing="-14" filter="url(#typeShadow)">AAA</text>
+        font-size="270" font-weight="900" letter-spacing="-14">AAA</text>
 
   <g fill="#247f99" font-family="Arial, Helvetica, sans-serif" font-size="67" font-weight="700">
     <text x="790" y="455">Academic</text>
