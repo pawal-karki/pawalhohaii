@@ -34,6 +34,8 @@ export default function NepalMap() {
     const [active, setActive] = useState(null);
     const [pinned, setPinned] = useState(null);
     const [centres, setCentres] = useState({});
+    const [photos, setPhotos] = useState({});
+    const [place, setPlace] = useState(null);
     const paths = useRef({});
 
     useEffect(() => {
@@ -41,6 +43,11 @@ export default function NepalMap() {
         fetch(asset('/data/nepal-districts.json'))
             .then((r) => r.json())
             .then((d) => alive && setDistricts(d))
+            .catch(() => {});
+        // Destination photos from Wikimedia Commons (scripts/places-photos.py); the card works without them.
+        fetch(asset('/data/places.json'))
+            .then((r) => r.json())
+            .then((p) => alive && setPhotos(p))
             .catch(() => {});
         return () => (alive = false);
     }, []);
@@ -68,6 +75,10 @@ export default function NepalMap() {
     const shown = active || pinned;
     const info = shown && districts?.find((d) => d.id === shown);
     const at = shown && centres[shown];
+    const spots = info && DESTINATIONS[info.id];
+    // A new district starts on its first place's photo; Sunsari starts on my photo instead.
+    useEffect(() => setPlace(shown && shown !== HOME ? DESTINATIONS[shown]?.[0] ?? null : null), [shown]);
+    const photo = place && photos[place];
 
     return (
         <div className="nepal-map absolute inset-0" onPointerLeave={() => setActive(null)}>
@@ -124,23 +135,48 @@ export default function NepalMap() {
                 <div
                     role="status"
                     className="map-card"
+                    // Moving onto the card keeps it open, so its places can be hovered.
+                    onPointerEnter={() => setPinned(shown)}
                     data-side={(at.x - VIEW.x) / VIEW.w > 0.62 ? 'right' : (at.x - VIEW.x) / VIEW.w < 0.3 ? 'left' : 'center'}
-                    data-below={(at.y - VIEW.y) / VIEW.h < 0.3 || undefined}
+                    data-below={(at.y - VIEW.y) / VIEW.h < (photo ? 0.65 : 0.3) || undefined} // taller with a photo: open below unless the district is low
                     data-home={info.id === HOME || undefined}
                     style={{ left: `${((at.x - VIEW.x) / VIEW.w) * 100}%`, top: `${((at.y - VIEW.y) / VIEW.h) * 100}%` }}
                 >
-                    {info.id === HOME && <img src={PHOTO} alt="Pawal Karki Dholi" width="480" height="600" className="me-card-photo mb-3 aspect-[4/5] w-52 rounded-lg object-cover object-top" />}
+                    {photo ? (
+                        <figure className="mb-3">
+                            <img key={photo.img} src={asset(photo.img)} alt={place} width="480" height="300" className="map-card-photo aspect-[8/5] w-full rounded-lg bg-surface-2 object-cover" />
+                            {/* Wikimedia Commons credit (photographer and license), linking to the file page. */}
+                            <figcaption className="mt-1 truncate text-[10px] text-muted">
+                                <a href={photo.source} target="_blank" rel="noreferrer" className="underline-offset-2 hover:text-fg hover:underline">
+                                    Photo: {photo.credit.replace(/\s*\(.*$/, '')}
+                                    {photo.license && ` · ${photo.license}`}
+                                </a>
+                            </figcaption>
+                        </figure>
+                    ) : (
+                        info.id === HOME && <img src={PHOTO} alt="Pawal Karki Dholi" width="480" height="600" className="me-card-photo mb-3 aspect-[4/5] w-52 rounded-lg object-cover object-top" />
+                    )}
                     <p className="text-sm font-semibold text-fg">
                         {info.name}
                         {info.id === HOME && <span className="ml-2 rounded-full bg-accent-soft px-1.5 py-0.5 text-[11px] font-medium text-accent">Home</span>}
                     </p>
                     <p className="text-xs text-muted">{info.province}</p>
-                    {DESTINATIONS[info.id] && (
-                        <ul className="mt-2 space-y-1 text-[13px] text-fg">
-                            {DESTINATIONS[info.id].map((s) => (
-                                <li key={s} className="flex gap-2">
-                                    <span aria-hidden="true" className="mt-[0.45rem] size-1 shrink-0 rounded-full bg-accent-solid" />
-                                    {s}
+                    {spots && (
+                        <ul className="mt-2 -mx-1.5 text-[13px] text-fg">
+                            {spots.map((s) => (
+                                <li key={s}>
+                                    {/* Hover, focus or tap a place to see its photo. */}
+                                    <button
+                                        type="button"
+                                        onPointerEnter={() => setPlace(s)}
+                                        onFocus={() => setPlace(s)}
+                                        onClick={() => setPlace(s)}
+                                        aria-pressed={s === place}
+                                        className="flex w-full gap-2 rounded-md px-1.5 py-0.5 text-left transition-colors hover:bg-surface-2 aria-pressed:bg-surface-2"
+                                    >
+                                        <span aria-hidden="true" className="mt-[0.45rem] size-1 shrink-0 rounded-full bg-accent-solid" />
+                                        {s}
+                                    </button>
                                 </li>
                             ))}
                         </ul>

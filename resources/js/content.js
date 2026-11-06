@@ -289,7 +289,7 @@ export const DESTINATIONS = {
     rasuwa: ['Langtang Valley', 'Gosaikunda Lake', 'Kyanjin Gompa'],
     dolakha: ['Kalinchowk Bhagwati Temple'],
     chitwan: ['Chitwan National Park', 'Sauraha'],
-    solukhumbu: ['Mount Everest', 'Everest Base Camp', 'Namche Bazaar', 'Tengboche Monastery', 'Gokyo Lakes'],
+    solukhumbu: ['Sagarmatha (Mount Everest)', 'Everest Base Camp', 'Namche Bazaar', 'Tengboche Monastery', 'Gokyo Lakes'],
     sankhuwasabha: ['Makalu Barun National Park', 'Makalu Base Camp'],
     taplejung: ['Kanchenjunga Base Camp', 'Pathibhara Devi Temple'],
     ilam: ['Ilam tea gardens', 'Kanyam', 'Antu Danda'],

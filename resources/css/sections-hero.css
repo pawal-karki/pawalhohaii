@@ -156,7 +156,6 @@
     border-radius: 0.75rem;
     background: var(--bg);
     box-shadow: var(--shadow);
-    pointer-events: none;
     translate: -50% calc(-100% - var(--gap, 14px));
 }
 .map-card[data-side='right'] {

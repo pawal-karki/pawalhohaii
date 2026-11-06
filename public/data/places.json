@@ -1,0 +1,499 @@
+{
+ "Pashupatinath Temple": {
+  "img": "/images/places/pashupatinath-temple.webp",
+  "page": "Pashupatinath Temple",
+  "credit": "Bijay Chaurasia",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Pashupatinath_Temple-2020.jpg"
+ },
+ "Boudhanath Stupa": {
+  "img": "/images/places/boudhanath-stupa.webp",
+  "page": "Boudha Stupa",
+  "credit": "Sumitbhatt222",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Boudhanath_stupa_,_Kathmandu,_Nepal.jpg"
+ },
+ "Swayambhunath": {
+  "img": "/images/places/swayambhunath.webp",
+  "page": "Swayambhunath",
+  "credit": "Nabin K. Sapkota",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Swayambhunath_2018.jpg"
+ },
+ "Kathmandu Durbar Square": {
+  "img": "/images/places/kathmandu-durbar-square.webp",
+  "page": "Kathmandu Durbar Square",
+  "credit": "Artha at English Wikipedia",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Basantapurpalace.JPG"
+ },
+ "Thamel": {
+  "img": "/images/places/thamel.webp",
+  "page": "Thamel",
+  "credit": "Saddam Hussain Ansari",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Thamel_at_Night_-_Kathmandu,_Nepal_(1).jpg"
+ },
+ "Golden Temple": {
+  "img": "/images/places/golden-temple-patan-hiranya-varna-mahavihar.webp",
+  "page": "Hiranya Varna Mahavihar",
+  "credit": "Allie_Caulfield from Germany",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:2015-03-30_04-15_Nepal_926_Patan,_Lalitpur,_Golden_Temple_(16769604853).jpg"
+ },
+ "Godawari Botanical Garden": {
+  "img": "/images/places/godawari-botanical-garden.webp",
+  "page": "Godawari, Lalitpur",
+  "credit": "Shadow Ayush",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Godawari,_Lalitpur.jpg"
+ },
+ "Bhaktapur Durbar Square": {
+  "img": "/images/places/bhaktapur-durbar-square.webp",
+  "page": "Bhaktapur Durbar Square",
+  "credit": "Bikram Pratap Singh",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:View_of_Bhaktapur_Durbar_Square.jpg"
+ },
+ "Nyatapola Temple": {
+  "img": "/images/places/nyatapola-temple.webp",
+  "page": "Nyatapola Temple",
+  "credit": "Thomas Fuhrmann",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Kathmandu_und_Bhaktapur_2013-05-11_16-03-39.jpg"
+ },
+ "Changu Narayan Temple": {
+  "img": "/images/places/changu-narayan-temple.webp",
+  "page": "Changu Narayan Temple",
+  "credit": "Dhilung Kirat from Santa Barbara, CA",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Nepal_-_Changu_Narayan_(3566057331).jpg"
+ },
+ "Nagarkot": {
+  "img": "/images/places/nagarkot.webp",
+  "page": "Nagarkot",
+  "credit": "松岡明芳",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:2015-03-18_Nagarkot_Hotel_Galaxy_DSCF2094.jpg"
+ },
+ "Dhulikhel": {
+  "img": "/images/places/dhulikhel.webp",
+  "page": "Dhulikhel",
+  "credit": "Saddam19",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Panoramic_view_of_the_Great_Himalayan_Range_from_Dhulikhel,_Nepal_in_2025.jpg"
+ },
+ "Namobuddha": {
+  "img": "/images/places/namobuddha.webp",
+  "page": "Namo Buddha",
+  "credit": "Sherparinji",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Namobuddha,_kavre.jpg"
+ },
+ "Panauti": {
+  "img": "/images/places/panauti.webp",
+  "page": "Panauti",
+  "credit": "WrackAce",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Panauti_Core_Settlement.jpg"
+ },
+ "Daman": {
+  "img": "/images/places/daman-makwanpur.webp",
+  "page": "Daman, Nepal",
+  "credit": "Ucaughtmebaby",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:A_view_of_mountains_from_Daman_Nepal..JPG"
+ },
+ "Langtang Valley": {
+  "img": "/images/places/langtang-valley.webp",
+  "page": "Langtang",
+  "credit": "Q-lieb-in",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Starry_night_in_Langtang_National_Park.jpg"
+ },
+ "Gosaikunda Lake": {
+  "img": "/images/places/gosaikunda-lake.webp",
+  "page": "Gosaikunda",
+  "credit": "Saroj Pandey",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:The_Holy_Gosainkunda_Lake_during_the_winter._(By_Saroj_Pandey).jpg"
+ },
+ "Kalinchowk Bhagwati Temple": {
+  "img": "/images/places/kalinchowk-bhagwati-temple.webp",
+  "page": "Kalinchowk Bhagwati Temple",
+  "credit": "Krish Dulal",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Kalinchok_bhagawati_Statue.JPG"
+ },
+ "Chitwan National Park": {
+  "img": "/images/places/chitwan-national-park.webp",
+  "page": "Chitwan National Park",
+  "credit": "Vadim Tolbatov",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Chitwan_swamp.jpg"
+ },
+ "Sauraha": {
+  "img": "/images/places/sauraha.webp",
+  "page": "Sauraha",
+  "credit": "Ralf Lotys (Sicherlich)",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:2009-03_Sauraha_07.jpg"
+ },
+ "Everest Base Camp": {
+  "img": "/images/places/everest-base-camp.webp",
+  "page": "Everest base camps",
+  "credit": "Peellden",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Khumbutse.jpg"
+ },
+ "Namche Bazaar": {
+  "img": "/images/places/namche-bazaar.webp",
+  "page": "Namche Bazaar",
+  "credit": "stevehicks",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Namche_Bazaar_Nepal.jpg"
+ },
+ "Tengboche Monastery": {
+  "img": "/images/places/tengboche-monastery.webp",
+  "page": "Tengboche Monastery",
+  "credit": "Billjones94",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Front_view_of_the_iconic_Tengboche_Monastery_in_Nepal,_on_the_route_of_Everest_Base_camp_trek,_photographed_on_November_27,_2023.jpg"
+ },
+ "Gokyo Lakes": {
+  "img": "/images/places/gokyo-lakes.webp",
+  "page": "Gokyo Lakes",
+  "credit": "Vyacheslav Argenberg",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Gokyo_Ri_summit,_Gokyo_Lake,_Nepal,_Himalayas.jpg"
+ },
+ "Makalu Barun National Park": {
+  "img": "/images/places/makalu-barun-national-park.webp",
+  "page": "Makalu Barun National Park",
+  "credit": "Dhilung",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Barun_Valley_-_Nghe.jpg"
+ },
+ "Makalu Base Camp": {
+  "img": "/images/places/makalu-base-camp.webp",
+  "page": "Makalu",
+  "credit": "Ben Tubby",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Makalu.jpg"
+ },
+ "Kanchenjunga Base Camp": {
+  "img": "/images/places/kanchenjunga-base-camp.webp",
+  "page": "Kangchenjunga",
+  "credit": "Tomabarker",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Kangchenjunga_PangPema.JPG"
+ },
+ "Pathibhara Devi Temple": {
+  "img": "/images/places/pathibhara-devi-temple.webp",
+  "page": "Pathibhara Devi Temple",
+  "credit": "Avista7",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Pathibhara_2014.JPG"
+ },
+ "Itahari, home": {
+  "img": "/images/places/itahari.webp",
+  "page": "Itahari",
+  "credit": "Er.Naresh Chaudhary",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Itahari..jpg"
+ },
+ "Dharan": {
+  "img": "/images/places/dharan.webp",
+  "page": "Dharan",
+  "credit": "Rai504089",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:View_of_Dharan_from_Chinde_Dada_top_view_point.webp"
+ },
+ "Koshi Tappu Wildlife Reserve": {
+  "img": "/images/places/koshi-tappu-wildlife-reserve.webp",
+  "page": "Koshi Tappu Wildlife Reserve",
+  "credit": "Aditya Pal",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Wild_water_buffalo_at_Koshi_Tappu_Wildlife_Reserve.jpg"
+ },
+ "Janakpur": {
+  "img": "/images/places/janakpur.webp",
+  "page": "Janakpur",
+  "credit": "Abhishek Dutta (https://abhishekdutta.org)",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Janki_Mandir.JPG"
+ },
+ "Janaki Mandir": {
+  "img": "/images/places/janaki-mandir.webp",
+  "page": "Janaki Mandir",
+  "credit": "Abhishek Dutta (http://abhishekdutta.org), fix  chromatic aberration by uploader",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Janki_Mandir_alt_version.jpg"
+ },
+ "Pokhara": {
+  "img": "/images/places/pokhara.webp",
+  "page": "Pokhara",
+  "credit": "Utsab Raj Giri",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Pokhara_Valley.jpg"
+ },
+ "Phewa Lake": {
+  "img": "/images/places/phewa-lake.webp",
+  "page": "Phewa Lake",
+  "credit": "Jmhullot",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Phewa_lake,_Pokhara.jpg"
+ },
+ "Sarangkot": {
+  "img": "/images/places/sarangkot.webp",
+  "page": "Sarangkot",
+  "credit": "Q-lieb-in",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Sunset_flying_above_Himalayas.jpg"
+ },
+ "Poon Hill": {
+  "img": "/images/places/poon-hill.webp",
+  "page": "Poon Hill",
+  "credit": "Thapaliyashreeram",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Poon_hill_sunrise.jpg"
+ },
+ "Ghorepani": {
+  "img": "/images/places/ghorepani.webp",
+  "page": "Ghorepani",
+  "credit": "John Pavelka",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ghorepani.jpg"
+ },
+ "Muktinath Temple": {
+  "img": "/images/places/muktinath-temple.webp",
+  "page": "Muktinath",
+  "credit": "Ironicfreak",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:The_Muktinath_Temple.jpg"
+ },
+ "Kagbeni": {
+  "img": "/images/places/kagbeni.webp",
+  "page": "Kagbeni",
+  "credit": "Vyacheslav Argenberg",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Kagbeni,_Mustang,_Nepal.jpg"
+ },
+ "Jomsom": {
+  "img": "/images/places/jomsom.webp",
+  "page": "Jomsom",
+  "credit": "Saddam19",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Jomsom_from_View_Tower_(cropped).jpg"
+ },
+ "Annapurna Circuit": {
+  "img": "/images/places/annapurna-circuit.webp",
+  "page": "Annapurna Circuit",
+  "credit": "Ummidnp",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Under_stars_and_snows.jpg"
+ },
+ "Tilicho Lake": {
+  "img": "/images/places/tilicho-lake.webp",
+  "page": "Tilicho Lake",
+  "credit": "Solundir",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Peak_Tilicho_and_Lake_Tilicho.jpg"
+ },
+ "Thorong La Pass": {
+  "img": "/images/places/thorong-la-pass.webp",
+  "page": "Thorong La",
+  "credit": "Vyacheslav Argenberg",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Muktinath_Valley,_View_of_Thorong_La_Pass,_Mountains,_Nepal.jpg"
+ },
+ "Manakamana Temple": {
+  "img": "/images/places/manakamana-temple.webp",
+  "page": "Manakamana Temple",
+  "credit": "Bhupendra Shrestha",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Gorkha_Manakamana_Temple_(cropped).jpg"
+ },
+ "Manaslu Circuit": {
+  "img": "/images/places/manaslu-circuit.webp",
+  "page": "Manaslu",
+  "credit": "Ben Tubby",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Sunrise,_Manaslu.jpg"
+ },
+ "Lumbini, birthplace of the Buddha": {
+  "img": "/images/places/lumbini.webp",
+  "page": "Lumbini",
+  "credit": "Bibek Raj Pandeya",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:BRP_Lumbini_Mayadevi_temple.jpg"
+ },
+ "Maya Devi Temple": {
+  "img": "/images/places/maya-devi-temple.webp",
+  "page": "Maya Devi Temple, Lumbini",
+  "credit": "Bibek Raj Pandeya",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:BRP_Lumbini_Mayadevi_temple.jpg"
+ },
+ "Tansen": {
+  "img": "/images/places/tansen.webp",
+  "page": "Tansen, Nepal",
+  "credit": "Mithunkunwar9",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Evening_View_of_Tansen.jpg"
+ },
+ "Rani Mahal": {
+  "img": "/images/places/rani-mahal-palpa.webp",
+  "page": "Ranighat Palace",
+  "credit": "Krish Dulal",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Rani_mahal.jpg"
+ },
+ "Bardiya National Park": {
+  "img": "/images/places/bardiya-national-park.webp",
+  "page": "Bardiya National Park",
+  "credit": "Prabina Karki",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Bardiya_02.jpg"
+ },
+ "Rara Lake": {
+  "img": "/images/places/rara-lake.webp",
+  "page": "Rara Lake",
+  "credit": "Aadesh Baniya",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Rara_lake,_Mugu.jpg"
+ },
+ "Simikot, gateway to Mount Kailash": {
+  "img": "/images/places/simikot.webp",
+  "page": "Simikot Airport",
+  "credit": "Junu131",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Humla_airport.JPG"
+ },
+ "Ghodaghodi Lake": {
+  "img": "/images/places/ghodaghodi-lake.webp",
+  "page": "Ghodaghodi",
+  "credit": "Abhinav Joshi",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ghodaghodi_Lake,_Kailali.jpg"
+ },
+ "Shuklaphanta National Park": {
+  "img": "/images/places/shuklaphanta-national-park.webp",
+  "page": "Shuklaphanta National Park",
+  "credit": "Ganesh Paudel",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ranitaal1.JPG"
+ },
+ "Nuwakot Durbar": {
+  "img": "/images/places/nuwakot-durbar.webp",
+  "page": "Nuwakot Palace",
+  "credit": "Bijaya2043",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Nuwakot_Palace_(5).jpg"
+ },
+ "Kyanjin Gompa": {
+  "img": "/images/places/kyanjin-gompa.webp",
+  "page": "Langtang",
+  "credit": "Q-lieb-in",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Starry_night_in_Langtang_National_Park.jpg"
+ },
+ "Sagarmatha (Mount Everest)": {
+  "img": "/images/places/mount-everest.webp",
+  "page": "Mount Everest",
+  "credit": "Rdevany",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Mt._Everest_from_Gokyo_Ri_November_5,_2012.jpg"
+ },
+ "Ilam tea gardens": {
+  "img": "/images/places/ilam-tea-garden.webp",
+  "page": "Ilam Municipality",
+  "credit": "Hari gurung77",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ilam_green.jpg"
+ },
+ "Kanyam": {
+  "img": "/images/places/kanyam-ilam.webp",
+  "page": "Ilam Municipality",
+  "credit": "Hari gurung77",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ilam_green.jpg"
+ },
+ "Antu Danda": {
+  "img": "/images/places/antu-danda-ilam.webp",
+  "page": "Ilam District",
+  "credit": "Saroj Pandey",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Lush_Green_Tea_Gardens_are_what_makes_Ilam_district_popular._(By_Saroj_Pandey).jpg"
+ },
+ "Barahakshetra Temple": {
+  "img": "/images/places/barahakshetra-temple.webp",
+  "page": "Baraha Kshetra",
+  "credit": "Pushpendra khadka",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Barahakshetra_Temple_Main_Gate.jpg"
+ },
+ "World Peace Pagoda": {
+  "img": "/images/places/world-peace-pagoda.webp",
+  "page": "Shanti Stupa, Pokhara",
+  "credit": "PageantUpdatess",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Pokhara-Shanti-Stupa.jpg"
+ },
+ "Annapurna Base Camp": {
+  "img": "/images/places/annapurna-base-camp.webp",
+  "page": "Annapurna Sanctuary",
+  "credit": "Nancy Collins",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Machapuchre-wow.jpg"
+ },
+ "Tatopani hot springs": {
+  "img": "/images/places/tatopani-myagdi.webp",
+  "page": "Myagdi District",
+  "credit": "Madhabdhk",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Dhaulagiri_from_Ghorepani.jpg"
+ },
+ "Lo Manthang": {
+  "img": "/images/places/lo-manthang.webp",
+  "page": "Mustang District",
+  "credit": "Saddam19",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Kagbeni_Mustang_District_Nepal.jpg"
+ },
+ "Gorkha Durbar": {
+  "img": "/images/places/gorkha-durbar.webp",
+  "page": "Gorkha Palace",
+  "credit": "Anuj Devkota",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Gorkha_Palace_durbar.jpg"
+ },
+ "Bandipur": {
+  "img": "/images/places/bandipur.webp",
+  "page": "Bandipur Rural Municipality",
+  "credit": "Moonbeaver",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:NClark-2017-1-15.jpg"
+ },
+ "Chitlang": {
+  "img": "/images/places/chitlang.webp",
+  "page": "File:Chitlang organic village.jpg",
+  "credit": "Roman Raghu Shrestha",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Chitlang_organic_village.jpg"
+ },
+ "Shey Phoksundo Lake": {
+  "img": "/images/places/shey-phoksundo-lake.webp",
+  "page": "File:Shey-Phoksundo Lake in Dolpa.jpg",
+  "credit": "Sunuwargr",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Shey-Phoksundo_Lake_in_Dolpa.jpg"
+ },
+ "Patan Durbar Square": {
+  "img": "/images/places/patan-durbar-square.webp",
+  "page": "File:Lalitpur Durbar Square Temple 2023.jpg",
+  "credit": "Chainwit.",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Lalitpur_Durbar_Square_Temple_2023.jpg"
+ }
+}
