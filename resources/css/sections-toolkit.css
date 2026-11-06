@@ -1,0 +1,64 @@
+/* ---------- Toolkit (Skills.jsx) ---------- */
+.toolkit-row {
+    display: grid;
+    gap: 0.875rem;
+    padding-block: 1.5rem;
+    border-top: 1px solid var(--line);
+}
+@media (min-width: 768px) {
+    .toolkit-row {
+        grid-template-columns: 10rem 1fr;
+        gap: 2rem;
+        padding-block: 1.75rem;
+    }
+}
+.toolkit-group {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    font-weight: 500;
+    color: var(--fg);
+}
+@media (min-width: 768px) {
+    .toolkit-group {
+        padding-top: 0.4375rem;
+    }
+}
+
+.toolkit-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.toolkit-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 2.25rem;
+    padding-inline: 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: 0.5rem;
+    background: var(--surface);
+    font-size: 0.875rem;
+    color: var(--fg);
+    white-space: nowrap;
+    transition:
+        border-color 0.2s,
+        background-color 0.2s;
+}
+.toolkit-icon {
+    color: var(--muted);
+    transition: color 0.2s;
+}
+@media (hover: hover) {
+    .toolkit-chip:hover {
+        border-color: var(--line-strong);
+        background: var(--surface-2);
+    }
+    /* Hover: the logo takes its brand colour; near-black brands use fg on the dark theme. */
+    .toolkit-chip:hover .toolkit-icon {
+        color: var(--brand, var(--fg));
+    }
+    :root:not([data-theme='light']) .toolkit-chip[data-dark-brand]:hover .toolkit-icon {
+        color: var(--fg);
+    }
+}

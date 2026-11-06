@@ -1,0 +1,187 @@
+/* Hero, nav, footer skyline. Owned by the shell/hero agent. */
+
+.hero-name {
+    font-size: clamp(3rem, 9vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+}
+
+/* Nepal skyline (black & white): on white the paper disappears via multiply. */
+.hero-skyline {
+    mix-blend-mode: multiply;
+    opacity: 0.55;
+    /* Peaks fade out so text and buttons above the buildings stay readable. */
+    mask-image: linear-gradient(to bottom, transparent 5%, rgb(0 0 0 / 0.35) 35%, #000 65%);
+}
+/* Footer: the same skyline with its reflection, fading into the footer text below. */
+.footer-skyline {
+    mix-blend-mode: multiply;
+    opacity: 0.55;
+    mask-image: linear-gradient(to bottom, transparent, #000 25%, #000 60%, transparent 92%);
+}
+/* Dark theme gets its own night drawing; screen drops its black sky into the near-black background. */
+.skyline-dark {
+    mix-blend-mode: screen;
+    opacity: 0.5;
+}
+:root[data-theme='light'] .skyline-dark,
+:root:not([data-theme='light']) .skyline-light {
+    display: none;
+}
+
+/* District map of Nepal: hairline neutral outline, home district (Sunsari) in the accent. */
+.hero-map-lines {
+    background: var(--fg);
+    opacity: 0.09;
+}
+:root:not([data-theme='light']) .hero-map-lines {
+    opacity: 0.12;
+}
+.hero-map-home {
+    fill: color-mix(in oklab, var(--accent) 22%, transparent);
+    stroke: var(--accent);
+    stroke-width: 1.5;
+}
+.hero-map-pin {
+    fill: var(--accent);
+    stroke: var(--bg);
+    stroke-width: 2.5;
+}
+.hero-map-ping {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1.5;
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+    .hero-map-ping {
+        animation: map-ping 2.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+}
+@keyframes map-ping {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(4.5);
+        opacity: 0;
+    }
+}
+
+/* "Currently at" live dot */
+.live-dot {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 999px;
+    background: var(--success);
+}
+@media (prefers-reduced-motion: no-preference) {
+    .live-dot::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: var(--success);
+        animation: live-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+}
+@keyframes live-ping {
+    75%,
+    100% {
+        transform: scale(2.4);
+        opacity: 0;
+    }
+}
+
+/* ---------- Interactive district map ---------- */
+.nepal-map .district {
+    fill: transparent;
+    stroke: color-mix(in oklab, var(--fg) 14%, transparent);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+    transition:
+        fill 0.2s,
+        stroke 0.2s;
+    outline: none;
+}
+:root:not([data-theme='light']) .nepal-map .district {
+    stroke: color-mix(in oklab, var(--fg) 18%, transparent);
+}
+.nepal-map .district.has-spots {
+    fill: color-mix(in oklab, var(--accent) 5%, transparent);
+    cursor: pointer;
+}
+.nepal-map .district.is-home {
+    fill: color-mix(in oklab, var(--accent) 22%, transparent);
+    stroke: var(--accent);
+}
+.nepal-map .district:hover,
+.nepal-map .district.is-active {
+    fill: color-mix(in oklab, var(--accent) 28%, transparent);
+    stroke: var(--accent);
+    stroke-width: 1.5;
+}
+.nepal-map .district:focus-visible {
+    stroke: var(--accent);
+    stroke-width: 2.5;
+}
+.nepal-map .spot-dot {
+    fill: var(--accent);
+    opacity: 0.55;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+.nepal-map .spot-dot.is-active {
+    opacity: 1;
+}
+.nepal-map .hero-map-pin,
+.nepal-map .hero-map-ping {
+    pointer-events: none;
+}
+
+/* Info card anchored to the district centre; flips side near the map's edges. */
+.map-card {
+    position: absolute;
+    z-index: 5;
+    width: max-content;
+    max-width: 15rem;
+    padding: 0.75rem 0.875rem;
+    border: 1px solid var(--line);
+    border-radius: 0.75rem;
+    background: var(--bg);
+    box-shadow: var(--shadow);
+    pointer-events: none;
+    translate: -50% calc(-100% - 14px);
+}
+.map-card[data-side='right'] {
+    translate: calc(-100% + 24px) calc(-100% - 14px);
+}
+.map-card[data-side='left'] {
+    translate: -24px calc(-100% - 14px);
+}
+.map-card[data-below] {
+    translate: -50% 14px;
+}
+.map-card[data-below][data-side='right'] {
+    translate: calc(-100% + 24px) 14px;
+}
+.map-card[data-below][data-side='left'] {
+    translate: -24px 14px;
+}
+@media (prefers-reduced-motion: no-preference) {
+    .map-card {
+        animation: map-card-in 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+}
+@keyframes map-card-in {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+}

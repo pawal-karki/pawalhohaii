@@ -1,0 +1,58 @@
+{
+  "name": "Pawal Karki Dholi",
+  "role": "Full Stack Developer (Laravel / Next.js)",
+  "email": "pawal.atwork@gmail.com",
+  "phone": "9765378853",
+  "location": "Itahari, Nepal",
+  "links": {
+    "linkedin": "https://linkedin.com/in/pawal-karki",
+    "github": "https://github.com/pawal-karki",
+    "portfolio": "https://pawal.dev/",
+    "certifications": "https://www.linkedin.com/in/pawal-karki/details/certifications/"
+  },
+  "summary": "Full Stack Developer who builds scalable SaaS applications, modern web platforms and user-focused digital products. Skilled in Laravel, PHP, Next.js, TypeScript; experience adding AI-assisted reporting and compliance features to a live vendor-management platform, and building Pixora, a drag-and-drop website builder and CRM.",
+  "experience": [
+    {
+      "company": "Vetted Work", "title": "Laravel Developer", "period": "2026 – Present",
+      "logo": "logos/company/vetted-work.png",
+      "stack": ["laravel", "php", "mysql", "mongodb", "anthropic"],
+      "highlights": [
+        "Built super-admin Reports module (missing COI / default-project reports with filters, charts, Excel export)",
+        "Designed 'Ask AI': natural-language assistant over live data via Anthropic Claude API; sees only totals, never personal data",
+        "Safe AI-written SQL: whitelisted tables/columns, single-SELECT validator, read-only transactions, row/time limits, audit log",
+        "Spelling-tolerant name matching, live data-dictionary page, regression suite + PHPUnit tests",
+        "Permit signature authority matrix with role-conflict checks; Bypass AI permission; vendor access lock-out ('GOD MODE'); Australian English locale-aware text; permit pop-up bug fix; vendor export naming"
+      ]
+    },
+    {
+      "company": "Kyanite Software", "title": "Laravel Developer", "period": "06/2025 – 10/2025", "location": "Nepal",
+      "logo": null,
+      "stack": ["laravel", "mysql", "wordpress"],
+      "highlights": [
+        "Multi-restaurant app: auth, CRUD, role-based access, order-status email notifications",
+        "Tarahara Utsab: full-stack event-organisation website",
+        "Newspaper website (WordPress): themes and plugin management"
+      ]
+    }
+  ],
+  "projects": [
+    { "name": "Pixora", "desc": "Drag-and-drop website builder & CRM SaaS with one-click deploy, Kanban CRM, Stripe Connect billing, AI chatbot", "stack": ["nextdotjs", "typescript", "tailwindcss", "prisma", "mysql", "clerk", "stripe", "vercel"] },
+    { "name": "Sagarmatha AI", "desc": "AI platform generating runnable coding projects (Inngest agents, E2B sandboxes, tRPC)", "repo": "https://github.com/pawal-karki/sagarmatha-ai", "stack": ["nextdotjs", "typescript", "trpc", "reactquery", "prisma", "postgresql", "clerk"] },
+    { "name": "Airwings-Horizon", "desc": "Flight booking system with admin dashboard", "repo": "https://github.com/pawal-karki/AirWings-Horizon-Frontend", "stack": ["react", "tailwindcss", "django"] },
+    { "name": "बुक गरौं सल्लाह", "desc": "Online doctor-appointment booking with admin dashboard", "repo": "https://github.com/pawal-karki/doctor-appointment-system", "stack": ["openjdk", "html5", "css3", "javascript"] },
+    { "name": "LetsWatchTogether", "desc": "Chrome extension bypassing the Netflix Household restriction", "repo": "https://github.com/pawal-karki/LetsWatchTogether", "stack": ["html5", "css3", "javascript"] }
+  ],
+  "skills": {
+    "frontend": ["react", "javascript", "tailwindcss"],
+    "backend": ["laravel", "php", "django", "openjdk", "nextdotjs"],
+    "ai": ["anthropic"],
+    "databases": ["mysql", "postgresql", "mongodb"],
+    "tools": ["visualstudiocode", "git", "github", "postman", "clickup", "netlify"]
+  },
+  "education": [
+    { "school": "Itahari International College (London Metropolitan University)", "degree": "BSc. (Hons) Computing", "period": "10/2023 – present", "logo": "logos/company/iic.png" },
+    { "school": "Koshi Saint James Secondary College", "degree": "Higher Secondary +2 Science", "period": "07/2021 – 07/2023" }
+  ],
+  "certificates": ["React.js: Building an Interface", "React Essential Training", "Oracle Java Foundations"],
+  "achievements": ["Project Exhibitor, IIC | ING Higher Education Expo (27/02/2026)", "Project Exhibitor, IIC Quest 3.0 (12/06/2025)"]
+}
