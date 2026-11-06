@@ -25,11 +25,8 @@
 
 /* District map of Nepal: hairline neutral outline, home district (Sunsari) in the accent. */
 .hero-map-lines {
-    background: var(--fg);
-    opacity: 0.09;
-}
-:root:not([data-theme='light']) .hero-map-lines {
-    opacity: 0.12;
+    background: var(--accent);
+    opacity: 0.55;
 }
 .hero-map-home {
     fill: color-mix(in oklab, var(--accent) 22%, transparent);
@@ -100,18 +97,21 @@
 }
 
 /* ---------- Interactive district map ---------- */
+/* 3D terrain (NepalRelief) behind the district lines, cut to Nepal's outline. */
+.hero-relief {
+    pointer-events: none;
+    mask-size: 100% 100%;
+}
 .nepal-map .district {
     fill: transparent;
-    stroke: color-mix(in oklab, var(--fg) 14%, transparent);
+    /* Blue like the destination dots, so the outline reads on the terrain in both themes. */
+    stroke: color-mix(in oklab, var(--accent) 55%, transparent);
     stroke-width: 1;
     vector-effect: non-scaling-stroke;
     transition:
         fill 0.2s,
         stroke 0.2s;
     outline: none;
-}
-:root:not([data-theme='light']) .nepal-map .district {
-    stroke: color-mix(in oklab, var(--fg) 18%, transparent);
 }
 .nepal-map .district.has-spots {
     fill: color-mix(in oklab, var(--accent) 5%, transparent);
@@ -416,14 +416,14 @@
 }
 /* The map stays dim behind the photo until the avatar lands (JS + motion, 640px and up only). */
 @media (prefers-reduced-motion: no-preference) and (min-width: 640px) {
-    html.js .nepal-map:not([data-intro='done']) > :is(svg, .hero-map-lines) {
+    html.js .nepal-map:not([data-intro='done']) > :is(svg, .hero-map-lines, .hero-relief) {
         opacity: 0.25;
     }
     html.js .me-pin:not([data-phase]) {
         opacity: 0;
     }
 }
-.nepal-map > :is(svg, .hero-map-lines) {
+.nepal-map > :is(svg, .hero-map-lines, .hero-relief) {
     transition: opacity 0.9s ease;
 }
 
@@ -452,4 +452,16 @@
     width: 100%;
     height: auto;
     mask-image: linear-gradient(to bottom, transparent, #000 20%);
+}
+
+/* Prayer flags (WebGL) share the skyline's frame so they line up with it at every width, and ease in
+   once three.js has loaded instead of popping. */
+.hero-flags {
+    aspect-ratio: 2000 / 750;
+    animation: flags-in 1.6s ease both;
+}
+@keyframes flags-in {
+    from {
+        opacity: 0;
+    }
 }

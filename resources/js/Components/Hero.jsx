@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
 import Build from './Build';
 import { MailIcon, SocialLinks } from './Contact';
@@ -9,12 +9,17 @@ import { asset } from '../asset';
 
 
 const now = experience[0];
+// three.js is client-only: the SSR build drops this branch, so it never imports three.
+const PrayerFlags = import.meta.env.SSR ? null : lazy(() => import('./PrayerFlags'));
 
 export default function Hero() {
     const ref = useRef(null);
     const still = useReducedMotion();
     const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
     const mapY = useTransform(scrollYProgress, [0, 1], [0, still ? 0 : 60]);
+    // Flags load only after hydration, so the first paint never waits on three.js.
+    const [flags, setFlags] = useState(false);
+    useEffect(() => setFlags(true), []);
 
     return (
         <section id="top" ref={ref} className="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-32 pb-[32vw]">
@@ -73,6 +78,12 @@ export default function Hero() {
                     </span>
                 ))}
             </div>
+            {/* Prayer flags drift between the skyline (-z-20) and the map (-z-10); hidden for reduced motion. */}
+            {flags && !still && (
+                <Suspense fallback={null}>
+                    <PrayerFlags />
+                </Suspense>
+            )}
         </section>
     );
 }

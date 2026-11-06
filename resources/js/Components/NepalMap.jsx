@@ -1,9 +1,11 @@
-import { useLayoutEffect, useRef, useState, useEffect } from 'react';
+import { lazy, Suspense, useLayoutEffect, useRef, useState, useEffect } from 'react';
 import { animate } from 'motion';
 import { DESTINATIONS } from '../content';
 import { asset } from '../asset';
 
 const VIEW = { x: 0, y: 25, w: 1240, h: 780 };
+// 3D terrain under the districts (three.js), fetched on the client only: the SSR build never sees it.
+const NepalRelief = import.meta.env.SSR ? () => null : lazy(() => import('./NepalRelief'));
 const MAP_MASK = `url(${asset('/images/nepal-districts.svg')}) center / contain no-repeat`;
 const HOME = 'sunsari';
 const PHOTO = asset('/images/pawal.webp');
@@ -37,6 +39,13 @@ export default function NepalMap() {
     const [photos, setPhotos] = useState({});
     const [place, setPlace] = useState(null);
     const paths = useRef({});
+    const [relief, setRelief] = useState(false);
+
+    // Terrain only where it is cheap and wanted: not on phones, not with reduced motion, not without WebGL2.
+    useEffect(() => {
+        if (matchMedia('(max-width: 639px), (prefers-reduced-motion: reduce)').matches) return;
+        if (document.createElement('canvas').getContext('webgl2')) setRelief(true);
+    }, []);
 
     useEffect(() => {
         let alive = true;
@@ -83,6 +92,11 @@ export default function NepalMap() {
     return (
         <div className="nepal-map absolute inset-0" onPointerLeave={() => setActive(null)}>
             {!districts && <div aria-hidden="true" className="hero-map-lines absolute inset-0" style={{ mask: MAP_MASK, WebkitMask: MAP_MASK }} />}
+            {relief && districts && (
+                <Suspense fallback={null}>
+                    <NepalRelief outline={districts.map((d) => d.d).join(' ')} view={VIEW} />
+                </Suspense>
+            )}
             <svg className="absolute inset-0 size-full overflow-visible" viewBox={`${VIEW.x} ${VIEW.y} ${VIEW.w} ${VIEW.h}`} role="group" aria-label="Map of Nepal. Choose a district to see popular travel destinations.">
                 {districts?.map((d) => {
                     const spots = DESTINATIONS[d.id];
