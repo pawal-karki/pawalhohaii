@@ -22,23 +22,17 @@ export default function Hero() {
             <motion.div style={{ y: mapY }} className="hero-map absolute top-[12%] right-[-45%] -z-10 aspect-[1240/780] w-[150vw] sm:top-[14%] sm:right-[-10%] sm:w-[min(95vw,900px)] xl:right-[-2%]">
                 <NepalMap />
             </motion.div>
-            {/* One skyline per theme; the hidden one (display: none + lazy) is never downloaded. */}
-            {[
-                [asset('/images/nepal-skyline.jpg'), 458, 'skyline-light'],
-                [asset('/images/nepal-skyline-dark.jpg'), 398, 'skyline-dark'],
-            ].map(([src, height, theme]) => (
-                <motion.img
-                    key={theme}
-                    src={src}
-                    alt=""
-                    aria-hidden="true"
-                    width="2000"
-                    height={height}
-                    loading="lazy"
-                    style={{ y: skylineY }}
-                    className={`hero-skyline ${theme} pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-48 w-full object-cover object-bottom sm:h-64`}
-                />
-            ))}
+            {/* Colour skyline: the same image in both themes, no blend or filter. */}
+            <motion.img
+                src={asset('/images/nepal-skyline-colour.jpg')}
+                alt=""
+                aria-hidden="true"
+                width="2000"
+                height="448"
+                fetchPriority="high"
+                style={{ y: skylineY }}
+                className="hero-skyline pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-48 w-full object-cover object-bottom sm:h-64"
+            />
 
             {/* Pointer events pass through the empty space here so the map behind stays explorable. */}
             <div className="pointer-events-none mx-auto w-full max-w-6xl px-5 *:pointer-events-auto sm:px-8">

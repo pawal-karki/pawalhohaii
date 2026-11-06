@@ -7,12 +7,10 @@
     text-wrap: balance;
 }
 
-/* Nepal skyline (black & white): on white the paper disappears via multiply. */
+/* Hero skyline (colour): shown as-is in both themes. Only the top edge fades so the white sky
+   doesn't end in a hard line under the hero text. */
 .hero-skyline {
-    mix-blend-mode: multiply;
-    opacity: 0.55;
-    /* Peaks fade out so text and buttons above the buildings stay readable. */
-    mask-image: linear-gradient(to bottom, transparent 5%, rgb(0 0 0 / 0.35) 35%, #000 65%);
+    mask-image: linear-gradient(to bottom, transparent, #000 30%);
 }
 /* Footer: the same skyline with its reflection, fading into the footer text below. */
 .footer-skyline {
