@@ -14,28 +14,15 @@ export default function Hero() {
     const ref = useRef(null);
     const still = useReducedMotion();
     const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
-    const skylineY = useTransform(scrollYProgress, [0, 1], [0, still ? 0 : 120]);
     const mapY = useTransform(scrollYProgress, [0, 1], [0, still ? 0 : 60]);
 
     return (
-        <section id="top" ref={ref} className="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-32 pb-44 sm:pb-52">
+        <section id="top" ref={ref} className="relative isolate flex min-h-[100svh] flex-col overflow-hidden pt-32">
             <motion.div style={{ y: mapY }} className="hero-map absolute top-[12%] right-[-45%] -z-10 aspect-[1240/780] w-[150vw] sm:top-[14%] sm:right-[-10%] sm:w-[min(95vw,900px)] xl:right-[-2%]">
                 <NepalMap />
             </motion.div>
-            {/* Colour skyline: the same image in both themes, no blend or filter. */}
-            <motion.img
-                src={asset('/images/nepal-skyline-colour.jpg')}
-                alt=""
-                aria-hidden="true"
-                width="2000"
-                height="448"
-                fetchPriority="high"
-                style={{ y: skylineY }}
-                className="hero-skyline pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-48 w-full object-cover object-bottom sm:h-64"
-            />
-
             {/* Pointer events pass through the empty space here so the map behind stays explorable. */}
-            <div className="pointer-events-none mx-auto w-full max-w-6xl px-5 *:pointer-events-auto sm:px-8">
+            <div className="pointer-events-none mx-auto my-auto w-full max-w-6xl px-5 *:pointer-events-auto sm:px-8">
                 <a href="#experience" className="group inline-flex items-center gap-2.5 rounded-full border border-line bg-bg py-1 pr-3.5 pl-3 text-sm text-muted transition-colors hover:border-line-strong hover:bg-surface-2">
                     <span className="live-dot" aria-hidden="true" />
                     <span>
@@ -70,6 +57,17 @@ export default function Hero() {
                     </div>
                 </Build>
             </div>
+
+            {/* Colour skyline, uncropped at its natural size: the same image in both themes, no blend or filter. */}
+            <img
+                src={asset('/images/nepal-skyline-colour.webp')}
+                alt=""
+                aria-hidden="true"
+                width="2000"
+                height="750"
+                fetchPriority="high"
+                className="pointer-events-none mt-12 block h-auto w-full"
+            />
         </section>
     );
 }

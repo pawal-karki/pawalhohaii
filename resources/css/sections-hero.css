@@ -7,11 +7,6 @@
     text-wrap: balance;
 }
 
-/* Hero skyline (colour): shown as-is in both themes. Only the top edge fades so the white sky
-   doesn't end in a hard line under the hero text. */
-.hero-skyline {
-    mask-image: linear-gradient(to bottom, transparent, #000 30%);
-}
 /* Footer: the same skyline with its reflection, fading into the footer text below. */
 .footer-skyline {
     mix-blend-mode: multiply;
