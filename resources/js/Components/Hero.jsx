@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
 import Build from './Build';
 import { MailIcon, SocialLinks } from './Contact';
@@ -15,14 +15,30 @@ export default function Hero() {
     const still = useReducedMotion();
     const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
     const mapY = useTransform(scrollYProgress, [0, 1], [0, still ? 0 : 60]);
+    const content = useRef(null);
+
+    // Fit the skyline to the first screen: size the bottom padding so the buildings' base (the waterline,
+    // 70% down the 37.5vw-tall image) lands at the bottom of the window and only the reflection runs below.
+    // CSS clamps it to 24-32vw, so the buildings always stay below the buttons.
+    useLayoutEffect(() => {
+        const section = ref.current;
+        const fit = () => section.style.setProperty('--hero-fit', `${document.documentElement.clientHeight - content.current.offsetHeight - 128}px`);
+        const ro = new ResizeObserver(fit);
+        ro.observe(content.current);
+        addEventListener('resize', fit);
+        return () => {
+            ro.disconnect();
+            removeEventListener('resize', fit);
+        };
+    }, []);
 
     return (
-        <section id="top" ref={ref} className="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-32 pb-[32vw]">
-            <motion.div style={{ y: mapY }} className="hero-map absolute top-28 right-[-45%] -z-10 aspect-[1240/780] w-[150vw] sm:top-32 sm:right-[-10%] sm:w-[min(95vw,900px)] xl:right-[-2%]">
+        <section id="top" ref={ref} className="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-32 pb-[clamp(24vw,calc(var(--hero-fit,32vw)+11.25vw),32vw)]">
+            <motion.div style={{ y: mapY }} className="hero-map absolute top-24 right-[-45%] -z-10 aspect-[1240/780] w-[150vw] sm:top-20 sm:right-[-10%] sm:w-[min(95vw,900px)] xl:right-[-2%]">
                 <NepalMap />
             </motion.div>
             {/* Pointer events pass through the empty space here so the map behind stays explorable. */}
-            <div className="pointer-events-none mx-auto w-full max-w-6xl px-5 *:pointer-events-auto sm:px-8">
+            <div ref={content} className="pointer-events-none mx-auto w-full max-w-6xl px-5 *:pointer-events-auto sm:px-8">
                 <a href="#experience" className="group inline-flex items-center gap-2.5 rounded-full border border-line bg-bg py-1 pr-3.5 pl-3 text-sm text-muted transition-colors hover:border-line-strong hover:bg-surface-2">
                     <span className="live-dot" aria-hidden="true" />
                     <span>
@@ -60,8 +76,8 @@ export default function Hero() {
 
             {/* Background skyline, full image at its natural size along the bottom of the hero: day in light
                 mode, night in dark mode (the hidden one is never downloaded). Its top softly blurs and fades
-                into the page so the text above stays readable. The section's bottom padding (32vw, about 85% of
-                the image's 37.5vw height) keeps the buildings below the text; only sky and peaks sit behind it. */}
+                into the page so the text above stays readable. The section's bottom padding (24-32vw, fitted to the
+                window above) keeps the buildings below the buttons; only sky and peaks sit behind the text. */}
             <div aria-hidden="true" className="hero-sky pointer-events-none absolute inset-x-0 bottom-0 -z-20">
                 {[
                     ['/images/nepal-skyline-colour.webp', 750, 'hero-sky-light'],
