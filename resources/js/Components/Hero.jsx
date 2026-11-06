@@ -18,7 +18,7 @@ export default function Hero() {
 
     return (
         <section id="top" ref={ref} className="relative isolate flex min-h-[100svh] flex-col overflow-hidden pt-32">
-            <motion.div style={{ y: mapY }} className="hero-map absolute top-[12%] right-[-45%] -z-10 aspect-[1240/780] w-[150vw] sm:top-[14%] sm:right-[-10%] sm:w-[min(95vw,900px)] xl:right-[-2%]">
+            <motion.div style={{ y: mapY }} className="hero-map absolute top-28 right-[-45%] -z-10 aspect-[1240/780] w-[150vw] sm:top-32 sm:right-[-10%] sm:w-[min(95vw,900px)] xl:right-[-2%]">
                 <NepalMap />
             </motion.div>
             {/* Pointer events pass through the empty space here so the map behind stays explorable. */}
@@ -64,7 +64,7 @@ export default function Hero() {
                 ['/images/nepal-skyline-colour.webp', 'hero-sky-light'],
                 ['/images/nepal-skyline-colour-dark.webp', 'hero-sky-dark'],
             ].map(([src, theme]) => (
-                <img key={theme} src={asset(src)} alt="" aria-hidden="true" width="2000" height="750" loading="lazy" className={`${theme} pointer-events-none mt-12 h-auto w-full`} />
+                <img key={theme} src={asset(src)} alt="" aria-hidden="true" width="2000" height="750" loading="lazy" className={`${theme} pointer-events-none relative -z-20 mt-12 h-auto w-full`} />
             ))}
         </section>
     );

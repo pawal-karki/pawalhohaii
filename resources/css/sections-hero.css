@@ -437,3 +437,8 @@
 :root:not([data-theme='light']) .hero-sky-light {
     display: none;
 }
+/* The night image's sky is pure black; fade only its empty top edge so no seam shows against the
+   page's near-black. Nothing drawn in the image is affected. The map sits above both images. */
+.hero-sky-dark {
+    mask-image: linear-gradient(to bottom, transparent, #000 12%);
+}
