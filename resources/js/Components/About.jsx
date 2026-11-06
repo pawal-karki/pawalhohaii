@@ -33,6 +33,22 @@ export default function About() {
                                     <p className="font-medium leading-snug">{e.title}</p>
                                     <p className="mt-1 text-sm text-muted">{e.org}</p>
                                     <p className="mt-1.5 font-mono text-xs text-muted">{e.when}</p>
+                                    {e.awards && (
+                                        <ul aria-label="Scholarships" className="mt-4 space-y-3 border-l border-line pl-4">
+                                            {e.awards.map((a) => (
+                                                <li key={a.title} className="flex flex-col gap-3 sm:flex-row sm:items-start">
+                                                    {a.image && (
+                                                        <img src={a.image} alt="AAA Scholarship, Itahari International College" width="1600" height="850" loading="lazy" className="w-full max-w-56 shrink-0 rounded-lg border border-line sm:w-36" />
+                                                    )}
+                                                    <div>
+                                                        <p className="text-sm font-medium leading-snug">{a.title}</p>
+                                                        {a.text && <p className="mt-1 text-sm text-muted">{a.text}</p>}
+                                                        <p className="mt-1 font-mono text-xs text-muted">{a.when}</p>
+                                                    </div>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
                                 </div>
                             </li>
                         ))}

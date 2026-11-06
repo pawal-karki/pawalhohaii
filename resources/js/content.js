@@ -249,7 +249,21 @@ export const skills = [
 ];
 
 export const education = [
-    { when: '2023 — now', title: 'BSc (Hons) Computing', org: 'Itahari International College · London Metropolitan University', logo: asset('/logos/company/iic.png') },
+    {
+        when: '2023 — now',
+        title: 'BSc (Hons) Computing',
+        org: 'Itahari International College · London Metropolitan University',
+        logo: asset('/logos/company/iic.png'),
+        awards: [
+            {
+                when: 'Sep 2026',
+                title: 'Recipient, AAA Scholarship (Year 2)',
+                text: 'Awarded for strong academic attitude, attendance and performance.',
+                image: asset('/images/awards/itahari-aaa-scholarship.svg'),
+            },
+            { when: 'Mar 2026', title: 'Recipient, AAA Scholarship (Year 1)' },
+        ],
+    },
     { when: '2021 — 2023', title: 'Higher Secondary +2 Science', org: 'Koshi Saint James Secondary College', logo: asset('/logos/company/koshi-saint-james-emblem.png') },
 ];
 
