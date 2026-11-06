@@ -67,7 +67,7 @@ export default function Hero() {
                     ['/images/nepal-skyline-colour.webp', 750, 'hero-sky-light'],
                     ['/images/nepal-skyline-colour-dark.webp', 667, 'hero-sky-dark'],
                 ].map(([src, height, theme]) => (
-                    <img key={theme} src={asset(src)} alt="" width="2000" height={height} loading="lazy" className={`${theme} h-auto w-full`} />
+                    <img key={theme} src={asset(src)} alt="" width="2000" height={height} loading="lazy" className={`${theme} absolute inset-x-0 bottom-0 h-auto w-full`} />
                 ))}
                 <div className="hero-sky-blur" />
             </div>

@@ -437,8 +437,13 @@
 :root:not([data-theme='light']) .hero-sky-light {
     display: none;
 }
-/* Background skyline: the top fades into the page, and a blur layer softens the upper part
-   (strongest at the top, gone by the middle) so hero text over the sky stays readable. */
+/* Background skyline: both images share one frame sized to the day image (2000x750) and sit on
+   its bottom edge, so light and dark take the same space and line up; the shorter night image
+   (2000x667) just starts a little lower, inside the faded top. The top fades into the page, and a
+   blur layer softens the upper part (strongest at the top, gone by the middle). */
+.hero-sky {
+    aspect-ratio: 2000 / 750;
+}
 .hero-sky img {
     mask-image: linear-gradient(to bottom, transparent, #000 28%);
 }
