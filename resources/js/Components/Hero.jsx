@@ -94,8 +94,8 @@ export default function Hero() {
                     </span>
                 ))}
             </div>
-            {/* Prayer flags drift between the skyline (-z-20) and the map (-z-10); hidden for reduced motion. */}
-            {flags && !still && (
+            {/* Prayer flags drift between the skyline (-z-20) and the map (-z-10); held still for reduced motion. */}
+            {flags && (
                 <Suspense fallback={null}>
                     <PrayerFlags />
                 </Suspense>

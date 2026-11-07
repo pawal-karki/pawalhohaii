@@ -47,7 +47,36 @@ export default function NepalRelief({ outline, view }) {
                         if (n.length) tone[i] = n.reduce((a, b) => a + b) / n.length;
                     }
                 }
-                setMap({ w, h, tone });
+                // At hero size each heightmap cell spans 3-4 px, so a vertex per cell shows as facets and a
+                // stepped edge. Upsample 3x, smoothed, for a finer mesh with soft slopes.
+                // Done in floats: a canvas would round the heights back to 8 bits and leave fine terraces.
+                const S = 3;
+                const [W, H] = [w * S, h * S];
+                const at = (x, y) => tone[Math.min(h - 1, Math.max(0, y)) * w + Math.min(w - 1, Math.max(0, x))];
+                const fine = new Float32Array(W * H);
+                for (let y = 0; y < H; y++) {
+                    const fy = (y + 0.5) / S - 0.5;
+                    const y0 = Math.floor(fy);
+                    const ty = fy - y0;
+                    for (let x = 0; x < W; x++) {
+                        const fx = (x + 0.5) / S - 0.5;
+                        const x0 = Math.floor(fx);
+                        const tx = fx - x0;
+                        const top = at(x0, y0) + (at(x0 + 1, y0) - at(x0, y0)) * tx;
+                        const bottom = at(x0, y0 + 1) + (at(x0 + 1, y0 + 1) - at(x0, y0 + 1)) * tx;
+                        fine[y * W + x] = top + (bottom - top) * ty;
+                    }
+                }
+                // Two box-blur passes round off the bilinear creases along the old cell lines.
+                for (let pass = 0; pass < 2; pass++) {
+                    const prev = fine.slice();
+                    for (let y = 1; y < H - 1; y++)
+                        for (let x = 1; x < W - 1; x++) {
+                            const i = y * W + x;
+                            fine[i] = (prev[i - W - 1] + prev[i - W] + prev[i - W + 1] + prev[i - 1] + prev[i] + prev[i + 1] + prev[i + W - 1] + prev[i + W] + prev[i + W + 1]) / 9;
+                        }
+                }
+                setMap({ w: W, h: H, tone: fine });
             })
             .catch(() => {});
     }, []);
@@ -58,7 +87,7 @@ export default function NepalRelief({ outline, view }) {
                 orthographic
                 flat
                 frameloop="demand"
-                dpr={[1, 1.5]}
+                dpr={[1, 2]}
                 gl={{ alpha: true, powerPreference: 'low-power' }}
                 camera={{ position: [0, 0, 1000], near: 1, far: 2000 }}
                 style={{ pointerEvents: 'none', opacity: map ? 1 : 0, transition: 'opacity 1.2s ease' }}
